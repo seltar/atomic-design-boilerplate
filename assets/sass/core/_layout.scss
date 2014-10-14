@@ -1,0 +1,23 @@
+html.no-scroll,
+body.no-scroll {
+	overflow: hidden;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.block {
+	display: block;
+}
+
+.cf {
+	@extend %cf;
+}
+
+.wrap {
+	width: 93.75%;
+	max-width: $large-screen;
+	margin-right: auto;
+	margin-left: auto;
+}

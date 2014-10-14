@@ -1,0 +1,49 @@
+// MQs: WIDTH
+$small-max-screen: em(639);
+$med-screen: em(640);
+$med-max-screen: em(1099);
+$large-screen: em(1100);
+
+$small-max: "(max-width:#{$small-max-screen})";
+$med: "(min-width:#{$med-screen})";
+$med-large: "(min-width:#{$med-screen}) and (max-width:#{$med-max-screen})";
+$med-max: "(max-width:#{$med-max-screen})";
+$large: "(min-width:#{$large-screen})";
+
+// MQs: HEIGHT
+$large-max-height-screen: em(999);
+$large-height-screen: em(1000);
+
+$large-max-height: "(min-height:#{$large-max-height-screen})";
+$large-height: "(min-height:#{$large-height-screen})";
+
+// Contexts
+html {
+	font-family: "small";
+
+	@media #{$large}{
+		font-family: "large";
+	}
+}
+
+* html { // IE6
+	font-family: "large";
+}
+
+*+html { // IE7
+	font-family: "large";
+}
+
+@media \0screen { 
+	html { // IE8
+		font-family: "large";
+	}
+}
+
+body:after {
+	display: none;
+
+	@media #{$large}{
+		content: "large";
+	}
+}

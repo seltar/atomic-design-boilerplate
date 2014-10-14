@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">README.md</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="atomic-mockup-library">Atomic Mockup Library</h1>
+<blockquote>
+<p>Yonas Sandbaek <a href="https://twitter.com/seltar">@seltar</a>, <a href="https://github.com/seltar">github</a>
+<a href="https://github.com/yonas.sandbaek/AtomicMockupLibrary">https://github.com/yonas.sandbaek/AtomicMockupLibrary</a></p>
+</blockquote>
+<h6 id="version">Version</h6>
+<blockquote>
+<p>0.0.1</p>
+</blockquote>
+<h3 id="what-is-this">What is this</h3>
+<p>This project aims to give structure and improve automation when working with atomic design.</p>
+<h3 id="commenting">Commenting</h3>
+<p>Use markdown syntax in comments for nice formatted documentation
+<a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a></p>
+<h3 id="starting-up">Starting up</h3>
+<ul>
+<li>Clone the <a href="https://github.com/yonas.sandbaek/AtomicMockupLibrary.git">repo</a> or unpack zip to a new folder</li>
+<li>Open up terminal and install dependencies with <code>[sudo] npm install</code></li>
+<li>(not sure if needed) Install groc like this <code>[sudo] npm install -g groc</code></li>
+<li>Run <code>grunt</code> to build and start watching</li>
+<li>Go forth and write your jargon, you little codemonkey!</li>
+</ul>
+<h3 id="configuration">Configuration</h3>
+<ul>
+<li>To change the folder configuration, edit <code>settings.yml</code></li>
+<li>To change site details, edit <code>site.yml</code></li>
+</ul>
+<h3 id="building">Building</h3>
+<p>Here are the tasks you can use with grunt</p>
+<ul>
+<li><p>Clean folders and build html</p>
+<pre><code>  grunt build</code></pre>
+</li>
+<li><p>Lint and compile javascript</p>
+<pre><code>  grunt scripts </code></pre>
+</li>
+<li><p>Generate SASS import for components and compile SASS</p>
+<pre><code>  grunt styles </code></pre>
+</li>
+<li><p>Start watching for changes</p>
+<pre><code>  grunt automate </code></pre>
+</li>
+<li><p>Build documentation</p>
+<pre><code>  grunt docs</code></pre>
+</li>
+<li><p>Start watching for changes and generate documentation</p>
+<pre><code>  grunt autodocs</code></pre>
+</li>
+<li><p>Clean folders, build html, compile javascript, compile sass, generate documentation and start watching for changes</p>
+<pre><code>  grunt</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="folder-structure">Folder structure</h3>
+<pre><code>root
+│
+│   # settings and documentation
+│   README.md
+│   package.json
+│   Gruntfile.js
+│   site.yml
+│   settings.yml
+│   LICENSE-MIT
+│
+├───assets
+│   │
+│   ├───css
+│   │   │   
+│   │   │   # compiled css
+│   │   │   main.css
+│   │   │   ...
+│   │   └─────────────────────────
+│   │
+│   ├───ico
+│   │   │
+│   │   │   # favicons, apple icons etc
+│   │   │   ...
+│   │   └─────────────────────────
+│   │
+│   ├───js
+│   │   │   
+│   │   │   # main scripts
+│   │   │   all.min.js
+│   │   │   config.js 
+│   │   │   main.js 
+│   │   │      
+│   │   └───vendor
+│   │       │   
+│   │       │   # third party javascript libraries
+│   │       │   jquery.js
+│   │       │   require.js
+│   │       │   
+│   │       └─────────────────────────
+│   │       
+│   └───sass
+│       │   
+│       │   # main sass architecture
+│       │   _components.scss
+│       │   _site.scss 
+│       │   main.scss 
+│       │   
+│       ├───core
+│       │   │
+│       │   │   # core sass library
+│       │   │   _breakpoints.scss
+│       │   │   _colors.scss
+│       │   │   _extends.scss
+│       │   │   _functions.scss
+│       │   │   _imgs.scss
+│       │   │   _layout.scss
+│       │   │   _mixins.scss
+│       │   │   _type.scss
+│       │   │   
+│       │   └─────────────────────────
+│       │      
+│       └───external
+│           │
+│           │   # external resources
+│           │   _normalize-3.0.1.scss
+│           │   
+│           └─────────────────────────
+│           
+├───components
+│   │
+│   ├───_helpers
+│   │   │   
+│   │   │   # all .js files in this folder are included as handlebars helpers.
+│   │   │   atomic.js
+│   │   │   ...
+│   │   └─────────────────────────
+│   │
+│   ├───_layouts
+│   │   │
+│   │   │   # main layouts
+│   │   │   default.hbs
+│   │   │   ...
+│   │   └─────────────────────────
+│   │       
+│   ├───_partials
+│   │   │
+│   │   │   # all .hbs files in this folder are included as handlebars partials.
+│   │   │   head.hbs
+│   │   │   footer.hbs
+│   │   │   javascripts.hbs
+│   │   │   ...
+│   │   └─────────────────────────
+│   │       
+│   ├───atoms
+│   │   │
+│   │   │   # Atoms
+│   │   │   ...
+│   │   └─────────────────────────
+│   │       
+│   ├───molecules
+│   │   │
+│   │   │   # Molecules
+│   │   │   ...
+│   │   └─────────────────────────
+│   │       
+│   ├───organisms
+│   │   │
+│   │   │   # Organisms
+│   │   │   ...
+│   │   └─────────────────────────
+│   │       
+│   └───templates
+│       │
+│       │   # Templates
+│       │   ...
+│       └─────────────────────────
+│           
+│    
+├───data
+│   │
+│   │   # all .json files in this folder are included as data in handlebars templates.
+│   │   index.js
+│   │   ...
+│   └─────────────────────────
+│    
+├───node_modules
+│   │
+│   │   # all modules required to build
+│   │   ...
+│   └─────────────────────────
+│    
+│           
+└─output
+    │   # all built templates end up here, unless you changed the defaults in settings.yml
+    │   ...
+    └─────────────────────────</code></pre></div></div></div></div></body></html>

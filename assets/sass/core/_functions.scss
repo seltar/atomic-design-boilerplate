@@ -1,0 +1,11 @@
+@function em($target, $context: 16) {
+	@return ($target / $context) + em;
+}
+
+@function rem($target) {
+	@return ($target / 16) + rem;
+}
+
+@function p($target, $context) {
+	@return ($target / $context) * 100%;
+}

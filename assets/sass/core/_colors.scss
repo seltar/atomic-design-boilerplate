@@ -1,0 +1,47 @@
+// White
+$white: #fff;
+$white-dark: #f4f5f0;
+
+// Black
+$black: #303030;
+
+// Gray
+$gray: #cbcbc7;
+$gray-light: #e4e4e4; // Light gray
+
+// Dark
+$dark: #777677; // Dark gray
+$dark-light: #838181;
+
+// Primary
+$prim: #67af45; // Green
+$prim-light: #7fcc5b; // Light green
+
+// Styles
+body {
+	background-color: $white;
+}
+
+// Pattern Library
+ul.color {	
+	&:nth-child(1) li {
+		&:nth-child(1){ background-color: $prim; }
+		&:nth-child(2){ background-color: $prim-light; }
+	}
+
+	&:nth-child(2) li {
+		&:nth-child(1){ background-color: $gray; }
+		&:nth-child(2){ background-color: $gray-light; }
+	}
+
+	&:nth-child(3) li {
+		&:nth-child(1){ background-color: $dark; }
+		&:nth-child(2){ background-color: $dark-light; }
+	}
+
+	&:nth-child(4) li {
+		&:nth-child(1){ background-color: $black; color: $white; }
+		&:nth-child(2){ background-color: $white; }
+		&:nth-child(3){ background-color: $white-dark; }
+	}
+}

@@ -1,0 +1,39 @@
+# =============================================
+# Build config
+# =============================================
+
+root:             output
+
+# Site destination
+dest:             <%= settings.root %>
+
+# Documentation
+doc:              doc
+
+# Data
+data:             data/*.{json,yml}
+
+#Assets
+assets:           assets
+
+# Scripts
+scripts:          assets/js
+
+# Style
+style:            assets/sass
+
+#Components
+components:       components
+
+atoms:            <%= settings.components %>/atoms
+molecules:        <%= settings.components %>/molecules
+organisms:        <%= settings.components %>/organisms
+templates:        <%= settings.components %>/templates
+
+#Layout
+partials:         <%= settings.components %>/_partials
+layouts:          <%= settings.components %>/_layouts
+layout:           default.hbs
+
+# Extensions
+helpers:          <%= settings.components %>/_helpers/**/*.js

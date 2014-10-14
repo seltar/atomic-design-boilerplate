@@ -1,0 +1,17 @@
+// Spacing in pixels
+$xt: 5; // 5
+$t: $xt * 2; // 10
+$s: $t + $xt; // 15
+$m: $t * 2; // 20
+$l: $s * 2; // 30
+$xl: $l * 2; // 60
+
+// Layout
+.wrap {
+	padding: rem($l) 0;
+}
+
+// Typography
+h3 {
+	margin: 0 0 rem($s);
+}

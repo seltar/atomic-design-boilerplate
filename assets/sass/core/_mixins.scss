@@ -1,0 +1,69 @@
+@mixin cf {
+	*zoom: 1;
+
+	&:before,
+	&:after { 
+		content: " ";
+		display: table; 
+	}
+
+	&:after { 
+		clear: both;
+	}
+}
+
+@mixin list($margin: 0, $padding: 0) {
+	margin: $margin;
+	padding-left: $padding;
+	list-style: none;
+}
+
+@mixin btn($padding: 0, $border: none, $bg: transparent) {
+	background-color: $bg;
+	padding: $padding;
+	border: $border;
+
+	// There is no appearance, only -webkit- and -moz-
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+@mixin input($bg: transparent, $padding: 0, $border: none){
+	background-color: $bg;
+	padding: $padding;
+	border: $border;
+	border-radius: 0; // Mobile default reset
+
+	// There is no appearance, only -webkit- and -moz-
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+@mixin trans($type: all, $dur: .4s) {
+	transition: $type $dur ease;
+}
+
+@mixin transform($what: rotate(180deg)) {
+	transform: $what;
+}
+
+@mixin o($normal: 0, $ie: 0) {
+	// Most of IE polyfills are very bad for client perfomance.
+	// They use slow hacks and old IEs is mostly used on old hardware.
+	// Most CSS3 features used only for styling should be ignored in old IEs
+	// as is recommended for Graceful Degradation.
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie})";
+	filter: alpha(opacity=#{$ie});
+
+	// This is OK.
+	opacity: $normal;
+}
+
+// This method can cause elements to be blurry due to the element being placed
+// on a "half pixel". A solution is to set its parent element to 
+// transform-style: preserve-3d;
+@mixin centered($top: 50%, $left: 50%, $x: 50%, $y: 50%) { // IE 9+
+	position: absolute;
+	top: $top; left: $left;
+	transform: translate(-$x, -$y) translateZ(0);
+}

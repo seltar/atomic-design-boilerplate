@@ -1,0 +1,43 @@
+{
+  "name": "AtomicMockupLibrary",
+  "description": "An atomic mockup system for frontenders",
+  "version": "0.1.0",
+  "homepage": "https://github.com/yonas.sandbaek/AtomicMockupLibrary",
+  "author": {
+    "name": "Yonas Sandbaek",
+    "url": "https://github.com/yonas.sandbaek"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yonas.sandbaek/AtomicMockupLibrary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yonas.sandbaek/AtomicMockupLibrary/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/yonas.sandbaek/AtomicMockupLibrary/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "chalk": "~0.4.0"
+  },
+  "devDependencies": {
+    "assemble": "~0.4.33",
+    "grunt": "~0.4.2",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-groc": "^0.5.0",
+    "handlebars-helper-prettify": "~0.2.1",
+    "lodash": "~2.4.1",
+    "pretty": "~0.1.2",
+    "showup": "~0.1.2"
+  }
+}

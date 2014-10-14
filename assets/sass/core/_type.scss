@@ -1,0 +1,44 @@
+// Remember to update weights based on the chosen font family
+$light: 300;
+$normal: 400;
+$bold: 700;
+
+// General
+body,
+input { // Necessary to specify these styles on the input element, otherwise it's overwritten
+	font-size: em(16);
+	font-weight: $normal;
+	font-family: Arial, sans-serif;
+}
+
+button,
+input {
+	line-height: 1;
+}
+
+strong,
+b {
+	font-weight: $bold;
+}
+
+em,
+i {
+	font-style: italic;
+}
+
+// Inputs and buttons
+::-webkit-input-placeholder {
+	line-height: rem(18); // 2px more than the actual font size
+}
+
+:-moz-placeholder {
+	line-height: rem(18); // 2px more than the actual font size  
+}
+
+::-moz-placeholder {
+	line-height: rem(18); // 2px more than the actual font size  
+}
+
+:-ms-input-placeholder {  
+	line-height: rem(18); // 2px more than the actual font size  
+}

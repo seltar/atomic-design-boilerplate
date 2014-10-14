@@ -1,0 +1,25 @@
+// Remember to have "Run Autoprefixer on the CSS file" checked in CodeKit
+
+// External (before core)
+@import "external/_normalize-3.0.1";
+
+// Core
+@import "core/_extends";
+@import "core/_functions";
+@import "core/_mixins";
+
+// Changeable
+@import "core/_breakpoints";
+@import "core/_colors";
+@import "core/_spacing";
+@import "core/_type";
+@import "core/_imgs";
+
+// Non-changeable
+@import "core/_layout";
+
+// Atoms, molecules, organisms and templates
+@import "components";
+
+// Other site styles
+@import "site";
