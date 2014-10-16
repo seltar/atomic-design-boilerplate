@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/js/main.test.js</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="assets/js/main.test.js"><meta name="groc-project-path" content="assets/js/main.test.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/js/main.test.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>define([
+    &#39;intern!object&#39;,
+    &#39;intern/chai!assert&#39;,
+    &#39;require&#39;
+], function (registerSuite, assert, require) {
+    registerSuite({
+        name: &#39;index&#39;,</p>
+<pre><code>    &#39;greeting form&#39;: function () {
+        return this.remote
+            .get(require.toUrl(&#39;output/index.html&#39;))
+            .findById(&#39;home&#39;)
+            .getVisibleText()
+            .then(function (text) {
+                assert.strictEqual(text, &#39;Welcome!&#39;,
+                    &#39;Welcome is correct&#39;);
+            });
+    }
+});</code></pre>
+<p>});</p></div></div></div></div></body></html>

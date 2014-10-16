@@ -1,22 +1,20 @@
-<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">README.md</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="atomic-mockup-library">Atomic Mockup Library</h1>
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">README.md</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="atomic-design-boilerplate">Atomic Design Boilerplate</h1>
 <blockquote>
-<p>Yonas Sandbaek <a href="https://twitter.com/seltar">@seltar</a>, <a href="https://github.com/seltar">github</a>
-<a href="https://github.com/yonas.sandbaek/AtomicMockupLibrary">https://github.com/yonas.sandbaek/AtomicMockupLibrary</a></p>
+<p>Yonas Sandbaek <a href="https://twitter.com/seltar">@seltar</a>, <a href="https://github.com/seltar">github</a><br><a href="https://github.com/seltar/atomic-design-boilerplate">https://github.com/seltar/atomic-design-boilerplate</a></p>
 </blockquote>
 <h6 id="version">Version</h6>
 <blockquote>
-<p>0.0.1</p>
+<p>0.1.0</p>
 </blockquote>
 <h3 id="what-is-this">What is this</h3>
-<p>This project aims to give structure and improve automation when working with atomic design.</p>
+<p>This project aims to give structure and improve automation when working with atomic design principles.</p>
 <h3 id="commenting">Commenting</h3>
 <p>Use markdown syntax in comments for nice formatted documentation
 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a></p>
 <h3 id="starting-up">Starting up</h3>
 <ul>
-<li>Clone the <a href="https://github.com/yonas.sandbaek/AtomicMockupLibrary.git">repo</a> or unpack zip to a new folder</li>
+<li>Clone the <a href="https://github.com/seltar/atomic-design-boilerplate.git">repo</a> or download and unpack this <a href="https://github.com/seltar/atomic-design-boilerplate/archive/master.zip">zip</a> to a new folder</li>
 <li>Open up terminal and install dependencies with <code>[sudo] npm install</code></li>
-<li>(not sure if needed) Install groc like this <code>[sudo] npm install -g groc</code></li>
 <li>Run <code>grunt</code> to build and start watching</li>
 <li>Go forth and write your jargon, you little codemonkey!</li>
 </ul>
@@ -40,13 +38,31 @@
 <li><p>Start watching for changes</p>
 <pre><code>  grunt automate </code></pre>
 </li>
+<li><p>Start server with live reload</p>
+<pre><code>  grunt server</code></pre>
+</li>
+<li><p>Run unit and functional tests</p>
+<pre><code>  grunt test</code></pre>
+</li>
+<li><p>Register CSS Regression baseline</p>
+<pre><code>  grunt baseline</code></pre>
+</li>
+<li><p>Run CSS Regression tests</p>
+<pre><code>  grunt compare</code></pre>
+</li>
 <li><p>Build documentation</p>
 <pre><code>  grunt docs</code></pre>
 </li>
 <li><p>Start watching for changes and generate documentation</p>
 <pre><code>  grunt autodocs</code></pre>
 </li>
-<li><p>Clean folders, build html, compile javascript, compile sass, generate documentation and start watching for changes</p>
+<li><p>Builds the entire site</p>
+<pre><code>  grunt make</code></pre>
+</li>
+<li><p>Starts the server and watches files</p>
+<pre><code>  grunt run</code></pre>
+</li>
+<li><p>Clean folders, build html, compile javascript, compile sass, runs tests, generate documentation and start watching for changes</p>
 <pre><code>  grunt</code></pre>
 </li>
 </ul>
@@ -55,136 +71,136 @@
 <pre><code>root
 │
 │   # settings and documentation
-│   README.md
-│   package.json
-│   Gruntfile.js
-│   site.yml
-│   settings.yml
-│   LICENSE-MIT
+├───LICENSE-MIT
+├───README.md
+├───TODO.md
+├───package.json
+├───Gruntfile.js
+├───karma.conf.js
+├───site.yml
+├───settings.yml
 │
 ├───assets
 │   │
 │   ├───css
 │   │   │   
 │   │   │   # compiled css
-│   │   │   main.css
-│   │   │   ...
-│   │   └─────────────────────────
+│   │   └───main.css
 │   │
 │   ├───ico
 │   │   │
 │   │   │   # favicons, apple icons etc
-│   │   │   ...
-│   │   └─────────────────────────
 │   │
 │   ├───js
 │   │   │   
 │   │   │   # main scripts
-│   │   │   all.min.js
-│   │   │   config.js 
-│   │   │   main.js 
+│   │   ├───all.min.js
+│   │   ├───config.js 
+│   │   ├───main.js 
 │   │   │      
 │   │   └───vendor
 │   │       │   
 │   │       │   # third party javascript libraries
-│   │       │   jquery.js
-│   │       │   require.js
-│   │       │   
-│   │       └─────────────────────────
+│   │       ├───jquery.js
+│   │       └───require.js
 │   │       
 │   └───sass
 │       │   
 │       │   # main sass architecture
-│       │   _components.scss
-│       │   _site.scss 
-│       │   main.scss 
+│       ├───_components.scss
+│       ├───_site.scss 
+│       ├───main.scss 
 │       │   
 │       ├───core
 │       │   │
 │       │   │   # core sass library
-│       │   │   _breakpoints.scss
-│       │   │   _colors.scss
-│       │   │   _extends.scss
-│       │   │   _functions.scss
-│       │   │   _imgs.scss
-│       │   │   _layout.scss
-│       │   │   _mixins.scss
-│       │   │   _type.scss
-│       │   │   
-│       │   └─────────────────────────
+│       │   ├───_breakpoints.scss
+│       │   ├───_colors.scss
+│       │   ├───_extends.scss
+│       │   ├───_functions.scss
+│       │   ├───_imgs.scss
+│       │   ├───_layout.scss
+│       │   ├───_mixins.scss
+│       │   └───_type.scss
 │       │      
 │       └───external
 │           │
 │           │   # external resources
-│           │   _normalize-3.0.1.scss
-│           │   
-│           └─────────────────────────
+│           └───_normalize-3.0.1.scss
 │           
 ├───components
 │   │
 │   ├───_helpers
 │   │   │   
 │   │   │   # all .js files in this folder are included as handlebars helpers.
-│   │   │   atomic.js
-│   │   │   ...
-│   │   └─────────────────────────
+│   │   └───atomic.js
 │   │
 │   ├───_layouts
 │   │   │
 │   │   │   # main layouts
-│   │   │   default.hbs
-│   │   │   ...
-│   │   └─────────────────────────
+│   │   └───default.hbs
 │   │       
 │   ├───_partials
 │   │   │
 │   │   │   # all .hbs files in this folder are included as handlebars partials.
-│   │   │   head.hbs
-│   │   │   footer.hbs
-│   │   │   javascripts.hbs
-│   │   │   ...
-│   │   └─────────────────────────
+│   │   ├───head.hbs
+│   │   ├───footer.hbs
+│   │   └───javascripts.hbs
 │   │       
 │   ├───atoms
 │   │   │
 │   │   │   # Atoms
-│   │   │   ...
-│   │   └─────────────────────────
 │   │       
 │   ├───molecules
 │   │   │
 │   │   │   # Molecules
-│   │   │   ...
-│   │   └─────────────────────────
 │   │       
 │   ├───organisms
 │   │   │
 │   │   │   # Organisms
-│   │   │   ...
-│   │   └─────────────────────────
 │   │       
 │   └───templates
 │       │
 │       │   # Templates
-│       │   ...
-│       └─────────────────────────
-│           
 │    
 ├───data
 │   │
 │   │   # all .json files in this folder are included as data in handlebars templates.
-│   │   index.js
-│   │   ...
-│   └─────────────────────────
+│   └───index.js
+│    
+├───doc
+│   │
+│   │   # generated project documentation
 │    
 ├───node_modules
 │   │
 │   │   # all modules required to build
-│   │   ...
-│   └─────────────────────────
-│    
 │           
-└─output
-    │   # all built templates end up here, unless you changed the defaults in settings.yml
-    │   ...
-    └─────────────────────────</code></pre></div></div></div></div></body></html>
+├───output
+│   │
+│   │    # all built templates end up here, unless you changed the defaults in settings.yml
+│           
+└─tests
+    │
+    │   # karma AMD test runner
+    ├───karma-main.js
+    │   
+    ├───functional
+    │   │
+    │   │    # all functional tests using casperjs and mocha
+    │   └───example.title-match.js
+    │   
+    └───visual
+        │
+        │   # all visual tests using casperjs and phantomcss
+        ├───example.header.js
+        │   
+        └───screenshots
+            │
+            ├───baseline
+            │   │
+            │   │    # baseline renders for testing against
+            │
+            └───results
+                │
+                │    # resulting renders</code></pre></div></div></div></div></body></html>

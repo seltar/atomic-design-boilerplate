@@ -1,10 +1,11 @@
 require(["config"], function() {
 
-	require(["jquery", "atom/icon/icon"], function($) {
+	require(["vendor/jquery"], function($) {
 		console.log($);
 
 		$(function(){
-			console.log("$ loaded");
+			console.log("$ loaded", icon.greet("yonas"));
+
 		});
 	});
 

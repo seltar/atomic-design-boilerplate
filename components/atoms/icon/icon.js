@@ -1,7 +1,12 @@
-define([
-    "jquery"
-],  function($){
+define([],  function(){
 
-	alert("i am an icon");
+	return {
+		greet: function(name){
+			if(!name){
+				name = "world";
+			}
+			return 'hello, '+name+'!';
+		}
+	};
 	
 });

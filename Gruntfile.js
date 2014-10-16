@@ -8,19 +8,20 @@ module.exports = function(grunt) {
 	// # Project configuration.
 	grunt.initConfig({
 
-		// * Project metadata
+		// ##### Project metadata
 		pkg:		grunt.file.readJSON( 'package.json' ),
 		settings:	grunt.file.readYAML( 'settings.yml' ),
 		site:		grunt.file.readYAML( 'site.yml' ),
 
 
-		// * Before generating any new files, remove files from previous build.
+		// ##### Before generating any new files, remove files from previous build.
 		clean: {
-			site:	[ '<%= settings.dest %>/*.html' ],
-			doc:	[ '<%= settings.doc %>/*' ]
+			site:			[ '<%= settings.dest %>/*.html' ],
+			doc:			[ '<%= settings.doc %>/*' ],
+			screenshots:	[ '<%= settings.tests %>/visual/screenshots/*' ]
 		},
 
-		// * Lint JavaScript
+		// ##### Lint JavaScript
 		jshint: {
 			all: [
 				'Gruntfile.js', 
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Compile SASS
+		// ##### Compile SASS
 		sass: {
 			options: {
 				sourcemap: true
@@ -46,7 +47,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Generate SASS import file with all atoms, molecules, organisms and templates
+		// ##### Generate SASS import file with all atoms, molecules, organisms and templates
 		sassimp: {
 			site:{
 				files: ['<%= settings.atoms %>/**/*.scss','<%= settings.molecules %>/**/*.scss','<%= settings.organisms %>/**/*.scss', '<%= settings.templates %>/**/*.scss'],
@@ -54,11 +55,11 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Build HTML from templates and data
+		// ##### Build HTML from templates and data
 		assemble: {
 			options: {
 				flatten: true,
-				production: false,
+				production: true,
 				assets: '<%= settings.assets %>',
 				postprocess: require('pretty'),
 
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Watch files
+		// ##### Watch files
 		watch: {
 			sass: {
 				files: ['<%= settings.style %>/**/*.scss', '<%= settings.components %>/**/*.scss'],
@@ -102,6 +103,7 @@ module.exports = function(grunt) {
 
 					// > Scripts
 					"<%= settings.scripts %>/**/*.js", 
+					"<%= settings.tests %>/**/*.js", 
 					"<%= settings.atoms %>/**/*.js", 
 					"<%= settings.molecules %>/**/*.js", 
 					"<%= settings.organisms %>/**/*.js", 
@@ -126,7 +128,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Run multiple watch commands
+		// ##### Run multiple watch commands
 		concurrent: {
 			options: {
 				logConcurrentOutput: true
@@ -136,7 +138,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Compile scripts with Require JS
+		// ##### Compile scripts with Require JS
 		requirejs: {
 			compile: {
 				options: {
@@ -148,7 +150,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// * Generate documentation
+		// ##### Generate documentation
 		groc: {
 			site: [
 				"README.md",
@@ -157,6 +159,8 @@ module.exports = function(grunt) {
 
 				// > Scripts
 				"<%= settings.scripts %>/**/*.js", 
+				"!<%= settings.scripts %>/vendor/**/*.js", 
+				"<%= settings.tests %>/**/*.js", 
 				"<%= settings.atoms %>/**/*.js", 
 				"<%= settings.molecules %>/**/*.js", 
 				"<%= settings.organisms %>/**/*.js", 
@@ -180,52 +184,151 @@ module.exports = function(grunt) {
 			options: {
 				"out": "<%= settings.doc %>/"
 			}
-		}
+		},
 
+		// ##### Live reload with BrowserSync
+		browserSync: {
+			bsFiles: {
+				src : [
+					'<%= settings.assets %>/css/*.css',
+					'<%= settings.assets %>/js/*.js',
+					'<%= settings.dest %>/*.html'
+				]
+			},
+			options: {
+				server: {
+					baseDir: "./output/",
+					watchTask: true
+				}
+			}
+		},
+		
+		// ##### Unit testing with Karma, Mocha, Chai and Sinon
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js',
+				singleRun: true,
+				reporters: 'progress',
+				runnerPort: 9876
+			}
+		},
+
+		// ##### Functional testing with CasperJS and Mocha
+		mocha_casperjs: {
+			options: {
+				reporter: 'spec'
+			},
+			site: {
+				src: ['<%= settings.tests %>/functional/**/*.js']
+			}
+		},
+
+		// ##### CSS Regression testing with PhantomCSS
+		phantomcss: {
+			options: {
+			},
+			desktop: {
+				options: {
+					screenshots: '<%= settings.tests %>/visual/screenshots/baseline/desktop/',
+					results: '<%= settings.tests %>/visual/screenshots/results/desktop/',
+					viewportSize: [1024, 768]
+				},
+				src: [
+					'<%= settings.tests %>/visual/**/*.js'
+				]
+			},
+			mobile: {
+				options: {
+					screenshots: '<%= settings.tests %>/visual/screenshots/baseline/mobile/',
+					results: '<%= settings.tests %>/visual/screenshots/results/mobile/',
+					viewportSize: [320, 480]
+				},
+				src: [
+					'<%= settings.tests %>/visual/**/*.js'
+				]
+			}
+		}
 	});
 
 	// ### Load npm plugins to provide necessary tasks.
+	//  
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-mocha-casperjs');
+	grunt.loadNpmTasks('grunt-browser-sync');
+	grunt.loadNpmTasks('grunt-phantomcss');
 	grunt.loadNpmTasks('grunt-concurrent');
-	grunt.loadNpmTasks('grunt-groc');
+	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('assemble');
+	// Modified [grunt-groc](https://github.com/seltar/grunt-groc) task with personal fork of [groc](https://github.com/seltar/groc)
+	grunt.loadNpmTasks('grunt-groc');
 
 	// ### Custom task to generate import statements of all components
+	//  
 	grunt.registerTask('sassimp', function(target){
-		// * Get the options
+		// Get the options
 		var options = grunt.config.get(this.name)[target];
 		var files = [];
-		// * Get all files matching the glob from options
+		// Get all files matching the glob from options
 		grunt.file.expand(options.files).map(function(filepath) {
-			// * Get basename
+			// Get basename
 			var ofile = path.basename(filepath),
 				file = ofile.replace(".scss","").substr(1);
-			// * Push SASS import statement into array
+			// Push SASS import statement into array
 			files.push('@import "' + "../../" + filepath.replace(ofile,file) + '";');
 		});
-		// * Write results to destination file
+		// Write results to destination file
 		grunt.file.write(options.dest, files.join("\n"));
 	});
 
 	// ### Tasks
-	// * Build HTML
-	grunt.registerTask('build', ['clean:site', 'assemble:site']);
-	// * Check for errors in javascript
-	grunt.registerTask('scripts', ['jshint', 'requirejs']);
-	// * Generate components import and compile SASS
-	grunt.registerTask('styles', ['sassimp:site', 'sass:site']);
-	// * Generate documentation
-	grunt.registerTask('docs', ['clean:doc', 'groc:site']);
-	// * Watch for changes and generate documentation
-	grunt.registerTask('autodocs', ['watch:docs']);
-	// * Watch for changes and automatically run tasks
-	grunt.registerTask('automate', ['concurrent:site']);
+	//  
 
-	// * Default task
-	grunt.registerTask('default', ['build', 'scripts', 'styles', 'docs', 'automate']);
+	// * `grunt server` 
+	// > Start server with live reload
+	grunt.registerTask('server', ['browserSync']);
+	// * `grunt build` 
+	// > Build HTML
+	grunt.registerTask('build', ['clean:site', 'assemble:site']);
+	// * `grunt scripts` 
+	// > Check for errors in javascript
+	grunt.registerTask('scripts', ['jshint', 'requirejs']);
+	// * `grunt styles` 
+	// > Generate components import and compile SASS
+	grunt.registerTask('styles', ['sassimp:site', 'sass:site']);
+	// * `grunt docs` 
+	// > Generate documentation
+	grunt.registerTask('docs', ['clean:doc', 'groc:site']);
+	// * `grunt autodocs` 
+	// > Watch for changes and generate documentation
+	grunt.registerTask('autodocs', ['watch:docs']);
+	// * `grunt automate` 
+	// > Watch for changes and automatically run tasks
+	grunt.registerTask('automate', ['concurrent:site']);
+	// * `grunt test` 
+	// > Run unit and functional tests
+	grunt.registerTask('test', ['karma', 'mocha_casperjs']);
+	// * `grunt baseline`
+	// > Register CSS Regression baseline
+	grunt.registerTask('baseline', ['clean:screenshots', 'phantomcss']);
+	// * `grunt compare` 
+	// > Run CSS Regression tests
+	grunt.registerTask('compare', ['phantomcss']);
+	//  
+
+	// * `grunt make` 
+	// > Builds the entire site
+	grunt.registerTask('make', ['build', 'scripts', 'styles']);
+	// * `grunt run` 
+	// > Starts the server and watches files
+	grunt.registerTask('run', ['server', 'automate']);
+	//  
+
+	// * `grunt` 
+	// > Default task
+	grunt.registerTask('default', ['build', 'scripts', 'styles', 'test', 'docs', 'server', 'automate']);
 
 };

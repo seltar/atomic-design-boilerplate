@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><title>components/atoms/icon/icon.test.js</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="components/atoms/icon/icon.test.js"><meta name="groc-project-path" content="components/atoms/icon/icon.test.js"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">components/atoms/icon/icon.test.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">define([<span class="hljs-string">'./icon'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(icon)</span> {</span>
+
+	describe(<span class="hljs-string">'Test icon atom'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+		it(<span class="hljs-string">'should greet with hello, yonas!'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+			icon.greet(<span class="hljs-string">"yonas"</span>).should.equal(<span class="hljs-string">"hello, yonas!"</span>);
+		});
+		<span class="hljs-comment">/*before(function() {
+			casper.start('output/index.html');
+		});
+
+		it('should greet with hello, yonas!', function() {
+			casper.then(function() {
+				'Home | Atomic Mockup Library'.should.matchTitle;
+				'form[action="/search"]'.should.be.inDOM.and.be.visible;
+				this.fill('form[action="/search"]', {
+					q: 'casperjs'
+				}, true);
+				
+			});
+
+			casper.waitForUrl(/q=casperjs/, function() {
+				(/casperjs/).should.matchTitle;
+			});
+			
+		});
+		*/</span>
+	});
+});</div></div></div></div></body></html>

@@ -2,6 +2,6 @@
 # Site config
 # =============================================
 
-title:            Atomic Mockup Library
-description:      An atomic mockup system for frontenders
+title:            Atomic Design Boilerplate
+description:      A boilerplate with focus on atomic design principles
 author:           yonas.sandbaek@creuna.no

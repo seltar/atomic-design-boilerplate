@@ -19,6 +19,9 @@ assets:           assets
 # Scripts
 scripts:          assets/js
 
+# Tests
+tests:             tests
+
 # Style
 style:            assets/sass
 

@@ -21,8 +21,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 1,
-            "title": "Atomic Mockup Library",
-            "slug": "atomic-mockup-library",
+            "title": "Atomic Design Boilerplate",
+            "slug": "atomic-design-boilerplate",
             "isFileHeader": true
           },
           "depth": 1,
@@ -86,7 +86,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             }
           ]
         },
-        "title": "Atomic Mockup Library"
+        "title": "Atomic Design Boilerplate"
       },
       "depth": 1,
       "outline": [
@@ -162,8 +162,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         },
         "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/Gruntfile.js",
         "projectPath": "Gruntfile.js",
-        "targetPath": "Gruntfile",
-        "pageTitle": "Gruntfile",
+        "targetPath": "Gruntfile.js",
+        "pageTitle": "Gruntfile.js",
         "firstHeader": {
           "type": "heading",
           "data": {
@@ -188,6 +188,118 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "depth": 1,
           "children": [
             {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Project metadata",
+                "slug": "project-metadata"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Before generating any new files, remove files from previous build.",
+                "slug": "before-generating-any-new-files-remove-files-from-previous-build"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Lint JavaScript",
+                "slug": "lint-javascript"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Compile SASS",
+                "slug": "compile-sass"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Generate SASS import file with all atoms, molecules, organisms and templates",
+                "slug": "generate-sass-import-file-with-all-atoms-molecules-organisms-and-templates"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Build HTML from templates and data",
+                "slug": "build-html-from-templates-and-data"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Watch files",
+                "slug": "watch-files"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Run multiple watch commands",
+                "slug": "run-multiple-watch-commands"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Compile scripts with Require JS",
+                "slug": "compile-scripts-with-require-js"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Generate documentation",
+                "slug": "generate-documentation"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Live reload with BrowserSync",
+                "slug": "live-reload-with-browsersync"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Unit testing with Karma, Mocha, Chai and Sinon",
+                "slug": "unit-testing-with-karma-mocha-chai-and-sinon"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "Functional testing with CasperJS and Mocha",
+                "slug": "functional-testing-with-casperjs-and-mocha"
+              },
+              "depth": 5
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 5,
+                "title": "CSS Regression testing with PhantomCSS",
+                "slug": "css-regression-testing-with-phantomcss"
+              },
+              "depth": 5
+            }, {
               "type": "heading",
               "data": {
                 "level": 3,
@@ -225,8 +337,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         },
         "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/TODO.md",
         "projectPath": "TODO.md",
-        "targetPath": "TODO",
-        "pageTitle": "TODO",
+        "targetPath": "TODO.md",
+        "pageTitle": "TODO.md",
         "firstHeader": {
           "type": "heading",
           "data": {
@@ -245,8 +357,24 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 1,
+            "title": "TODOs Content",
+            "slug": "todos-content"
+          },
+          "depth": 1
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 1,
             "title": "Implemented features",
             "slug": "implemented-features"
+          },
+          "depth": 1
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "Bugs",
+            "slug": "bugs"
           },
           "depth": 1
         }
@@ -281,9 +409,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/js/all.min.js",
                 "projectPath": "assets/js/all.min.js",
-                "targetPath": "assets/js/all.min",
-                "pageTitle": "assets/js/all.min",
-                "title": "all.min"
+                "targetPath": "assets/js/all.min.js",
+                "pageTitle": "assets/js/all.min.js",
+                "title": "all.min.js"
               },
               "depth": 3,
               "outline": []
@@ -301,9 +429,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/js/config.js",
                 "projectPath": "assets/js/config.js",
-                "targetPath": "assets/js/config",
-                "pageTitle": "assets/js/config",
-                "title": "config"
+                "targetPath": "assets/js/config.js",
+                "pageTitle": "assets/js/config.js",
+                "title": "config.js"
               },
               "depth": 3,
               "outline": []
@@ -321,62 +449,32 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/js/main.js",
                 "projectPath": "assets/js/main.js",
-                "targetPath": "assets/js/main",
-                "pageTitle": "assets/js/main",
-                "title": "main"
+                "targetPath": "assets/js/main.js",
+                "pageTitle": "assets/js/main.js",
+                "title": "main.js"
               },
               "depth": 3,
               "outline": []
             }, {
-              "type": "folder",
+              "type": "file",
               "data": {
-                "path": "assets/js/vendor",
-                "title": "vendor"
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/js/main.test.js",
+                "projectPath": "assets/js/main.test.js",
+                "targetPath": "assets/js/main.test.js",
+                "pageTitle": "assets/js/main.test.js",
+                "title": "main.test.js"
               },
               "depth": 3,
-              "children": [
-                {
-                  "type": "file",
-                  "data": {
-                    "language": {
-                      "nameMatchers": [".js"],
-                      "pygmentsLexer": "javascript",
-                      "multiLineComment": ["/*", "*", "*/"],
-                      "singleLineComment": ["//"],
-                      "ignorePrefix": "}",
-                      "foldPrefix": "^",
-                      "name": "JavaScript"
-                    },
-                    "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/js/vendor/jquery.js",
-                    "projectPath": "assets/js/vendor/jquery.js",
-                    "targetPath": "assets/js/vendor/jquery",
-                    "pageTitle": "assets/js/vendor/jquery",
-                    "title": "jquery"
-                  },
-                  "depth": 4,
-                  "outline": []
-                }, {
-                  "type": "file",
-                  "data": {
-                    "language": {
-                      "nameMatchers": [".js"],
-                      "pygmentsLexer": "javascript",
-                      "multiLineComment": ["/*", "*", "*/"],
-                      "singleLineComment": ["//"],
-                      "ignorePrefix": "}",
-                      "foldPrefix": "^",
-                      "name": "JavaScript"
-                    },
-                    "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/js/vendor/require.js",
-                    "projectPath": "assets/js/vendor/require.js",
-                    "targetPath": "assets/js/vendor/require",
-                    "pageTitle": "assets/js/vendor/require",
-                    "title": "require"
-                  },
-                  "depth": 4,
-                  "outline": []
-                }
-              ]
+              "outline": []
             }
           ]
         }, {
@@ -401,9 +499,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/_components.scss",
                 "projectPath": "assets/sass/_components.scss",
-                "targetPath": "assets/sass/_components",
-                "pageTitle": "assets/sass/_components",
-                "title": "_components"
+                "targetPath": "assets/sass/_components.scss",
+                "pageTitle": "assets/sass/_components.scss",
+                "title": "_components.scss"
               },
               "depth": 3,
               "outline": []
@@ -421,9 +519,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/_site.scss",
                 "projectPath": "assets/sass/_site.scss",
-                "targetPath": "assets/sass/_site",
-                "pageTitle": "assets/sass/_site",
-                "title": "_site"
+                "targetPath": "assets/sass/_site.scss",
+                "pageTitle": "assets/sass/_site.scss",
+                "title": "_site.scss"
               },
               "depth": 3,
               "outline": []
@@ -449,9 +547,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_breakpoints.scss",
                     "projectPath": "assets/sass/core/_breakpoints.scss",
-                    "targetPath": "assets/sass/core/_breakpoints",
-                    "pageTitle": "assets/sass/core/_breakpoints",
-                    "title": "_breakpoints"
+                    "targetPath": "assets/sass/core/_breakpoints.scss",
+                    "pageTitle": "assets/sass/core/_breakpoints.scss",
+                    "title": "_breakpoints.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -469,9 +567,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_colors.scss",
                     "projectPath": "assets/sass/core/_colors.scss",
-                    "targetPath": "assets/sass/core/_colors",
-                    "pageTitle": "assets/sass/core/_colors",
-                    "title": "_colors"
+                    "targetPath": "assets/sass/core/_colors.scss",
+                    "pageTitle": "assets/sass/core/_colors.scss",
+                    "title": "_colors.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -489,9 +587,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_extends.scss",
                     "projectPath": "assets/sass/core/_extends.scss",
-                    "targetPath": "assets/sass/core/_extends",
-                    "pageTitle": "assets/sass/core/_extends",
-                    "title": "_extends"
+                    "targetPath": "assets/sass/core/_extends.scss",
+                    "pageTitle": "assets/sass/core/_extends.scss",
+                    "title": "_extends.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -509,9 +607,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_functions.scss",
                     "projectPath": "assets/sass/core/_functions.scss",
-                    "targetPath": "assets/sass/core/_functions",
-                    "pageTitle": "assets/sass/core/_functions",
-                    "title": "_functions"
+                    "targetPath": "assets/sass/core/_functions.scss",
+                    "pageTitle": "assets/sass/core/_functions.scss",
+                    "title": "_functions.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -529,9 +627,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_imgs.scss",
                     "projectPath": "assets/sass/core/_imgs.scss",
-                    "targetPath": "assets/sass/core/_imgs",
-                    "pageTitle": "assets/sass/core/_imgs",
-                    "title": "_imgs"
+                    "targetPath": "assets/sass/core/_imgs.scss",
+                    "pageTitle": "assets/sass/core/_imgs.scss",
+                    "title": "_imgs.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -549,9 +647,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_layout.scss",
                     "projectPath": "assets/sass/core/_layout.scss",
-                    "targetPath": "assets/sass/core/_layout",
-                    "pageTitle": "assets/sass/core/_layout",
-                    "title": "_layout"
+                    "targetPath": "assets/sass/core/_layout.scss",
+                    "pageTitle": "assets/sass/core/_layout.scss",
+                    "title": "_layout.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -569,9 +667,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_mixins.scss",
                     "projectPath": "assets/sass/core/_mixins.scss",
-                    "targetPath": "assets/sass/core/_mixins",
-                    "pageTitle": "assets/sass/core/_mixins",
-                    "title": "_mixins"
+                    "targetPath": "assets/sass/core/_mixins.scss",
+                    "pageTitle": "assets/sass/core/_mixins.scss",
+                    "title": "_mixins.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -589,9 +687,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_spacing.scss",
                     "projectPath": "assets/sass/core/_spacing.scss",
-                    "targetPath": "assets/sass/core/_spacing",
-                    "pageTitle": "assets/sass/core/_spacing",
-                    "title": "_spacing"
+                    "targetPath": "assets/sass/core/_spacing.scss",
+                    "pageTitle": "assets/sass/core/_spacing.scss",
+                    "title": "_spacing.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -609,9 +707,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/core/_type.scss",
                     "projectPath": "assets/sass/core/_type.scss",
-                    "targetPath": "assets/sass/core/_type",
-                    "pageTitle": "assets/sass/core/_type",
-                    "title": "_type"
+                    "targetPath": "assets/sass/core/_type.scss",
+                    "pageTitle": "assets/sass/core/_type.scss",
+                    "title": "_type.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -639,9 +737,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/external/_normalize-3.0.1.scss",
                     "projectPath": "assets/sass/external/_normalize-3.0.1.scss",
-                    "targetPath": "assets/sass/external/_normalize-3.0.1",
-                    "pageTitle": "assets/sass/external/_normalize-3.0.1",
-                    "title": "_normalize-3.0.1"
+                    "targetPath": "assets/sass/external/_normalize-3.0.1.scss",
+                    "pageTitle": "assets/sass/external/_normalize-3.0.1.scss",
+                    "title": "_normalize-3.0.1.scss"
                   },
                   "depth": 4,
                   "outline": [
@@ -719,9 +817,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/assets/sass/main.scss",
                 "projectPath": "assets/sass/main.scss",
-                "targetPath": "assets/sass/main",
-                "pageTitle": "assets/sass/main",
-                "title": "main"
+                "targetPath": "assets/sass/main.scss",
+                "pageTitle": "assets/sass/main.scss",
+                "title": "main.scss"
               },
               "depth": 3,
               "outline": []
@@ -760,9 +858,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/_layouts/default.hbs",
                 "projectPath": "components/_layouts/default.hbs",
-                "targetPath": "components/_layouts/default",
-                "pageTitle": "components/_layouts/default",
-                "title": "default"
+                "targetPath": "components/_layouts/default.hbs",
+                "pageTitle": "components/_layouts/default.hbs",
+                "title": "default.hbs"
               },
               "depth": 3,
               "outline": []
@@ -781,9 +879,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/_layouts/sidebar.hbs",
                 "projectPath": "components/_layouts/sidebar.hbs",
-                "targetPath": "components/_layouts/sidebar",
-                "pageTitle": "components/_layouts/sidebar",
-                "title": "sidebar"
+                "targetPath": "components/_layouts/sidebar.hbs",
+                "pageTitle": "components/_layouts/sidebar.hbs",
+                "title": "sidebar.hbs"
               },
               "depth": 3,
               "outline": []
@@ -812,9 +910,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/_partials/footer.hbs",
                 "projectPath": "components/_partials/footer.hbs",
-                "targetPath": "components/_partials/footer",
-                "pageTitle": "components/_partials/footer",
-                "title": "footer"
+                "targetPath": "components/_partials/footer.hbs",
+                "pageTitle": "components/_partials/footer.hbs",
+                "title": "footer.hbs"
               },
               "depth": 3,
               "outline": []
@@ -833,9 +931,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/_partials/head.hbs",
                 "projectPath": "components/_partials/head.hbs",
-                "targetPath": "components/_partials/head",
-                "pageTitle": "components/_partials/head",
-                "title": "head"
+                "targetPath": "components/_partials/head.hbs",
+                "pageTitle": "components/_partials/head.hbs",
+                "title": "head.hbs"
               },
               "depth": 3,
               "outline": []
@@ -854,9 +952,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 },
                 "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/_partials/javascripts.hbs",
                 "projectPath": "components/_partials/javascripts.hbs",
-                "targetPath": "components/_partials/javascripts",
-                "pageTitle": "components/_partials/javascripts",
-                "title": "javascripts"
+                "targetPath": "components/_partials/javascripts.hbs",
+                "pageTitle": "components/_partials/javascripts.hbs",
+                "title": "javascripts.hbs"
               },
               "depth": 3,
               "outline": []
@@ -892,29 +990,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/atoms/icon/_icon.scss",
                     "projectPath": "components/atoms/icon/_icon.scss",
-                    "targetPath": "components/atoms/icon/_icon",
-                    "pageTitle": "components/atoms/icon/_icon",
-                    "title": "_icon"
-                  },
-                  "depth": 4,
-                  "outline": []
-                }, {
-                  "type": "file",
-                  "data": {
-                    "language": {
-                      "nameMatchers": [".js"],
-                      "pygmentsLexer": "javascript",
-                      "multiLineComment": ["/*", "*", "*/"],
-                      "singleLineComment": ["//"],
-                      "ignorePrefix": "}",
-                      "foldPrefix": "^",
-                      "name": "JavaScript"
-                    },
-                    "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/atoms/icon/icon.js",
-                    "projectPath": "components/atoms/icon/icon.js",
-                    "targetPath": "components/atoms/icon/icon",
-                    "pageTitle": "components/atoms/icon/icon",
-                    "title": "icon"
+                    "targetPath": "components/atoms/icon/_icon.scss",
+                    "pageTitle": "components/atoms/icon/_icon.scss",
+                    "title": "_icon.scss"
                   },
                   "depth": 4,
                   "outline": []
@@ -933,9 +1011,49 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/atoms/icon/icon.hbs",
                     "projectPath": "components/atoms/icon/icon.hbs",
-                    "targetPath": "components/atoms/icon/icon",
-                    "pageTitle": "components/atoms/icon/icon",
-                    "title": "icon"
+                    "targetPath": "components/atoms/icon/icon.hbs",
+                    "pageTitle": "components/atoms/icon/icon.hbs",
+                    "title": "icon.hbs"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }, {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".js"],
+                      "pygmentsLexer": "javascript",
+                      "multiLineComment": ["/*", "*", "*/"],
+                      "singleLineComment": ["//"],
+                      "ignorePrefix": "}",
+                      "foldPrefix": "^",
+                      "name": "JavaScript"
+                    },
+                    "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/atoms/icon/icon.js",
+                    "projectPath": "components/atoms/icon/icon.js",
+                    "targetPath": "components/atoms/icon/icon.js",
+                    "pageTitle": "components/atoms/icon/icon.js",
+                    "title": "icon.js"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }, {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".js"],
+                      "pygmentsLexer": "javascript",
+                      "multiLineComment": ["/*", "*", "*/"],
+                      "singleLineComment": ["//"],
+                      "ignorePrefix": "}",
+                      "foldPrefix": "^",
+                      "name": "JavaScript"
+                    },
+                    "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/atoms/icon/icon.test.js",
+                    "projectPath": "components/atoms/icon/icon.test.js",
+                    "targetPath": "components/atoms/icon/icon.test.js",
+                    "pageTitle": "components/atoms/icon/icon.test.js",
+                    "title": "icon.test.js"
                   },
                   "depth": 4,
                   "outline": []
@@ -974,9 +1092,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/templates/about/about.hbs",
                     "projectPath": "components/templates/about/about.hbs",
-                    "targetPath": "components/templates/about/about",
-                    "pageTitle": "components/templates/about/about",
-                    "title": "about"
+                    "targetPath": "components/templates/about/about.hbs",
+                    "pageTitle": "components/templates/about/about.hbs",
+                    "title": "about.hbs"
                   },
                   "depth": 4,
                   "outline": []
@@ -1005,14 +1123,104 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     },
                     "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/components/templates/index/index.hbs",
                     "projectPath": "components/templates/index/index.hbs",
-                    "targetPath": "components/templates/index/index",
-                    "pageTitle": "components/templates/index/index",
-                    "title": "index"
+                    "targetPath": "components/templates/index/index.hbs",
+                    "pageTitle": "components/templates/index/index.hbs",
+                    "title": "index.hbs"
                   },
                   "depth": 4,
                   "outline": []
                 }
               ]
+            }
+          ]
+        }
+      ]
+    }, {
+      "type": "folder",
+      "data": {
+        "path": "tests",
+        "title": "tests"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "type": "folder",
+          "data": {
+            "path": "tests/functional",
+            "title": "functional"
+          },
+          "depth": 2,
+          "children": [
+            {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/tests/functional/example.title-match.js",
+                "projectPath": "tests/functional/example.title-match.js",
+                "targetPath": "tests/functional/example.title-match.js",
+                "pageTitle": "tests/functional/example.title-match.js",
+                "title": "example.title-match.js"
+              },
+              "depth": 3,
+              "outline": []
+            }
+          ]
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".js"],
+              "pygmentsLexer": "javascript",
+              "multiLineComment": ["/*", "*", "*/"],
+              "singleLineComment": ["//"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "JavaScript"
+            },
+            "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/tests/karma-main.js",
+            "projectPath": "tests/karma-main.js",
+            "targetPath": "tests/karma-main.js",
+            "pageTitle": "tests/karma-main.js",
+            "title": "karma-main.js"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "folder",
+          "data": {
+            "path": "tests/visual",
+            "title": "visual"
+          },
+          "depth": 2,
+          "children": [
+            {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/yonas.sandbaek/creuna/Web/2014/PatternLibHBS/tests/visual/example.header.js",
+                "projectPath": "tests/visual/example.header.js",
+                "targetPath": "tests/visual/example.header.js",
+                "pageTitle": "tests/visual/example.header.js",
+                "title": "example.header.js"
+              },
+              "depth": 3,
+              "outline": []
             }
           ]
         }

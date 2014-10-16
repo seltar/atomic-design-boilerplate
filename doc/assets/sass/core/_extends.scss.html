@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/sass/core/_extends.scss</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="assets/sass/core/_extends.scss"><meta name="groc-project-path" content="assets/sass/core/_extends.scss"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/sass/core/_extends.scss</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper">%cf {
+	*zoom<span class="hljs-value">: <span class="hljs-number">1</span>;</span>
+
+	&amp;<span class="hljs-pseudo">:before</span>,
+	&amp;<span class="hljs-pseudo">:after</span> { 
+		<span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">" "</span>;</span>
+		<span class="hljs-attribute">display</span><span class="hljs-value">: table;</span> 
+	}
+
+	&amp;<span class="hljs-pseudo">:after</span> { 
+		<span class="hljs-attribute">clear</span><span class="hljs-value">: both;</span>
+	}
+}
+
+%hide-<span class="hljs-value">text</span> {
+	<span class="hljs-attribute">text-indent</span><span class="hljs-value">: -<span class="hljs-number">9999</span>px;</span>
+	<span class="hljs-attribute">overflow</span><span class="hljs-value">: hidden;</span>
+	<span class="hljs-attribute">white-space</span><span class="hljs-value">: nowrap;</span>
+}
+
+%hide-elem {
+	<span class="hljs-attribute">position</span><span class="hljs-value">: fixed;</span>
+	<span class="hljs-attribute">top</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span> <span class="hljs-attribute">left</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+	<span class="hljs-attribute">z-index</span><span class="hljs-value">: -<span class="hljs-number">1</span>;</span>
+	<span class="hljs-attribute">visibility</span><span class="hljs-value">: hidden;</span>
+}
+
+%whole {
+	<span class="hljs-attribute">position</span><span class="hljs-value">: absolute;</span>
+	<span class="hljs-attribute">top</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span> <span class="hljs-attribute">left</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+	<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+	<span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+}</div></div></div></div></body></html>

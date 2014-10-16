@@ -7,6 +7,6 @@ requirejs.config({
 		template: '../../components/templates/',
 
 		// vendor libraries
-		jquery: 'vendor/jquery'
+		vendor: 'vendor'
 	}
 });
