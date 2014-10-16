@@ -1,12 +1,10 @@
 require(["config"], function() {
+	require(["jquery"], function($) {
 
-	require(["vendor/jquery"], function($) {
 		console.log($);
 
 		$(function(){
-			console.log("$ loaded", icon.greet("yonas"));
-
+			console.log("$ loaded");
 		});
 	});
-
 });

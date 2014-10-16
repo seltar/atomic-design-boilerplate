@@ -5,7 +5,7 @@ describe('Functional testing', function() {
 
 	it('Title matches', function() {
 		casper.then(function() {
-			'Home | Atomic Mockup Library'.should.matchTitle;
+			'Home | Atomic Design Boilerplate'.should.matchTitle;
 			
 		});
 	});

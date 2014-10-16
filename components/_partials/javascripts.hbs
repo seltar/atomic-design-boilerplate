@@ -1,5 +1,6 @@
 {{! Load Require }}
 {{#if production}}
+	<script src="{{assets}}/js/vendor/require.js"></script>
 	<script src="{{assets}}/js/all.min.js"></script>
 {{else}}
 	<script data-main="{{assets}}/js/main" src="{{assets}}/js/vendor/require.js"></script>

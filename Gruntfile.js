@@ -135,6 +135,9 @@ module.exports = function(grunt) {
 			},
 			site: {
 				tasks: ['watch:sass', 'watch:js', 'watch:hbs']
+			},
+			run: {
+				tasks: ['server', 'automate']
 			}
 		},
 
@@ -197,7 +200,7 @@ module.exports = function(grunt) {
 			},
 			options: {
 				server: {
-					baseDir: "./output/",
+					baseDir: ['<%= settings.dest %>/', './'],
 					watchTask: true
 				}
 			}
@@ -290,9 +293,12 @@ module.exports = function(grunt) {
 	// * `grunt server` 
 	// > Start server with live reload
 	grunt.registerTask('server', ['browserSync']);
+	// * `grunt clean` 
+	// > Cleans HTML folder
+	grunt.registerTask('clean', ['clean:site']);
 	// * `grunt build` 
 	// > Build HTML
-	grunt.registerTask('build', ['clean:site', 'assemble:site']);
+	grunt.registerTask('build', ['assemble:site']);
 	// * `grunt scripts` 
 	// > Check for errors in javascript
 	grunt.registerTask('scripts', ['jshint', 'requirejs']);
@@ -321,14 +327,14 @@ module.exports = function(grunt) {
 
 	// * `grunt make` 
 	// > Builds the entire site
-	grunt.registerTask('make', ['build', 'scripts', 'styles']);
+	grunt.registerTask('make', ['clean', 'build', 'scripts', 'styles']);
 	// * `grunt run` 
 	// > Starts the server and watches files
-	grunt.registerTask('run', ['server', 'automate']);
+	grunt.registerTask('run', ['concurrent:run']);
 	//  
 
 	// * `grunt` 
 	// > Default task
-	grunt.registerTask('default', ['build', 'scripts', 'styles', 'test', 'docs', 'server', 'automate']);
+	grunt.registerTask('default', ['make', 'test', 'docs', 'run']);
 
 };

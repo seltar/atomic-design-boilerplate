@@ -16,6 +16,9 @@
     "$": false,
     "require": false,
     "requirejs": false,
-    "define": false
+    "define": false,
+    "it": false,
+    "describe": false
+
   } 
 }

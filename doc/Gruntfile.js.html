@@ -99,6 +99,9 @@ module.exports = <span class="hljs-function"><span class="hljs-keyword">function
 			},
 			site: {
 				tasks: [<span class="hljs-string">'watch:sass'</span>, <span class="hljs-string">'watch:js'</span>, <span class="hljs-string">'watch:hbs'</span>]
+			},
+			run: {
+				tasks: [<span class="hljs-string">'server'</span>, <span class="hljs-string">'automate'</span>]
 			}
 		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="compile-scripts-with-require-js">Compile scripts with Require JS</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		requirejs: {
 			compile: {
@@ -266,11 +269,11 @@ module.exports = <span class="hljs-function"><span class="hljs-keyword">function
 <p>Starts the server and watches files</p>
 </blockquote>
 </li>
-</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'run'</span>, [<span class="hljs-string">'server'</span>, <span class="hljs-string">'automate'</span>]);</div></div></div><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'run'</span>, [<span class="hljs-string">'concurrent:run'</span>]);</div></div></div><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
 <li><code>grunt</code> <blockquote>
 <p>Default task</p>
 </blockquote>
 </li>
-</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'build'</span>, <span class="hljs-string">'scripts'</span>, <span class="hljs-string">'styles'</span>, <span class="hljs-string">'test'</span>, <span class="hljs-string">'docs'</span>, <span class="hljs-string">'server'</span>, <span class="hljs-string">'automate'</span>]);
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'build'</span>, <span class="hljs-string">'scripts'</span>, <span class="hljs-string">'styles'</span>, <span class="hljs-string">'test'</span>, <span class="hljs-string">'docs'</span>, <span class="hljs-string">'run'</span>]);
 
 };</div></div></div></div></body></html>
