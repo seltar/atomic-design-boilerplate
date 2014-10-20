@@ -5,16 +5,6 @@ title: Home
 <h1 id="{{slugify title}}">Welcome!</h1>
 <p class="lead">{{site.description}}</p>
 
-<!-- POC -->
-<!-- namespace for data's sake -->
-{{#index.icon}}
-	<!-- include partial atom 'icon' -->
-	{{> atom-icon }}
-{{/index.icon}}
 
-	<!-- alternate syntax #1 -->
-
-	{{> atom-icon index.icon }}
-
-	<!-- alternate syntax #2 -->
-	{{atom 'icon' index.icon }}
+<h3>Header Organism</h3>
+{{> organism-header index.header }}

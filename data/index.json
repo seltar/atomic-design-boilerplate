@@ -1,5 +1,14 @@
 {
-	"icon": {
-		"name": "helpme"
+	"header": {
+		"search": {
+			"field": {
+				"query": "search-term",
+				"placeholder": "Search here"
+			},
+			"button": {
+				"id": "btn-search",
+				"title": "Search"
+			}
+		}
 	}
 }
