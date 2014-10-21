@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 
 		// ##### Before generating any new files, remove files from previous build.
 		clean: {
-			site:			[ '<%= settings.dest %>/*.html' ],
+			site:			[ '<%= settings.dest %>/*' ],
 			doc:			[ '<%= settings.doc %>/*' ],
 			screenshots:	[ '<%= settings.tests %>/visual/screenshots/*' ]
 		},
@@ -27,8 +27,7 @@ module.exports = function(grunt) {
 				'Gruntfile.js', 
 				'<%= settings.scripts %>/**/*.js', 
 				'<%= settings.components %>/**/*.js',
-				'!<%= settings.scripts %>/vendor/*.js', // exclude vendor scripts
-				'!<%= settings.scripts %>/all.min.js'
+				'!<%= settings.scripts %>/vendor/**/*.js' // exclude vendor scripts
 			],
 			options: {
 				jshintrc: '.jshintrc'
@@ -42,7 +41,7 @@ module.exports = function(grunt) {
 			},
 			site: {
 				files: {
-					'<%= settings.assets %>/css/main.css': '<%= settings.style %>/main.scss'
+					'<%= settings.dest %>/<%= settings.assets %>/css/main.css': '<%= settings.style %>/main.scss'
 				}
 			}
 		},
@@ -60,7 +59,7 @@ module.exports = function(grunt) {
 			options: {
 				flatten: true,
 				production: true,
-				assets: '<%= settings.assets %>',
+				assets: '<%= settings.dest %>/<%= settings.assets %>',
 				postprocess: require('pretty'),
 
 				// > Metadata
@@ -78,9 +77,28 @@ module.exports = function(grunt) {
 			},
 			site: {
 				files: {'<%= settings.dest %>/': ['<%= settings.templates %>/**/*.hbs']}
+			},
+			atoms: {
+				files: {'<%= settings.dest %>/atoms/': ['<%= settings.atoms %>/**/*.hbs']}
+			},
+			molecules: {
+				files: {'<%= settings.dest %>/molecules/': ['<%= settings.molecules %>/**/*.hbs']}
+			},
+			organisms: {
+				files: {'<%= settings.dest %>/organisms/': ['<%= settings.organisms %>/**/*.hbs']}
 			}
 		},
 
+		// ##### Copy vendor scripts
+		copy: {
+			main: {
+				files: [
+					// includes files within path
+					{expand: true, cwd: '<%= settings.assets %>/', src: ['js/vendor/**/*.js'], dest: '<%= settings.dest %>/<%= settings.assets %>/', filter: 'isFile'},
+				]
+			}
+		},
+		
 		// ##### Watch files
 		watch: {
 			sass: {
@@ -88,7 +106,7 @@ module.exports = function(grunt) {
 				tasks: ['styles']
 			},
 			js: {
-				files: ['Gruntfile.js', '<%= settings.scripts %>/**/*.js', '<%= settings.components %>/**/*.js', '!<%= settings.scripts %>/all.min.js'],
+				files: ['Gruntfile.js', '<%= settings.scripts %>/**/*.js', '<%= settings.components %>/**/*.js'],
 				tasks: ['scripts']
 			},
 			hbs: {
@@ -148,7 +166,7 @@ module.exports = function(grunt) {
 					baseUrl: "<%= settings.scripts %>",
 					mainConfigFile: "<%= settings.scripts %>/config.js",
 					name: "main",
-					out: "<%= settings.scripts %>/all.min.js"
+					out: "<%= settings.dest %>/<%= settings.scripts %>/all.min.js"
 				}
 			}
 		},
@@ -193,14 +211,14 @@ module.exports = function(grunt) {
 		browserSync: {
 			bsFiles: {
 				src : [
-					'<%= settings.assets %>/css/*.css',
-					'<%= settings.assets %>/js/*.js',
+					'<%= settings.dest %>/<%= settings.assets %>/css/*.css',
+					'<%= settings.dest %>/<%= settings.assets %>/js/*.js',
 					'<%= settings.dest %>/*.html'
 				]
 			},
 			options: {
 				server: {
-					baseDir: ['<%= settings.dest %>/', './'],
+					baseDir: ['<%= settings.dest %>/'],
 					watchTask: true
 				}
 			}
@@ -256,6 +274,7 @@ module.exports = function(grunt) {
 	// ### Load npm plugins to provide necessary tasks.
 	//  
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
@@ -293,15 +312,15 @@ module.exports = function(grunt) {
 	// * `grunt server` 
 	// > Start server with live reload
 	grunt.registerTask('server', ['browserSync']);
-	// * `grunt clean` 
+	// * `grunt wipe` 
 	// > Cleans HTML folder
-	grunt.registerTask('clean', ['clean:site']);
+	grunt.registerTask('wipe', ['clean:site']);
 	// * `grunt build` 
 	// > Build HTML
-	grunt.registerTask('build', ['assemble:site']);
+	grunt.registerTask('build', ['assemble']);
 	// * `grunt scripts` 
 	// > Check for errors in javascript
-	grunt.registerTask('scripts', ['jshint', 'requirejs']);
+	grunt.registerTask('scripts', ['jshint', 'requirejs', 'copy']);
 	// * `grunt styles` 
 	// > Generate components import and compile SASS
 	grunt.registerTask('styles', ['sassimp:site', 'sass:site']);
@@ -327,7 +346,7 @@ module.exports = function(grunt) {
 
 	// * `grunt make` 
 	// > Builds the entire site
-	grunt.registerTask('make', ['clean', 'build', 'scripts', 'styles']);
+	grunt.registerTask('make', ['wipe', 'build', 'scripts', 'styles']);
 	// * `grunt run` 
 	// > Starts the server and watches files
 	grunt.registerTask('run', ['concurrent:run']);

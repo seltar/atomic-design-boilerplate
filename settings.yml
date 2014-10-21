@@ -2,7 +2,7 @@
 # Build config
 # =============================================
 
-root:             output
+root:             dist
 
 # Site destination
 dest:             <%= settings.root %>
@@ -20,7 +20,7 @@ assets:           assets
 scripts:          assets/js
 
 # Tests
-tests:             tests
+tests:            tests
 
 # Style
 style:            assets/sass
