@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 				]
 			}
 		},
-		
+
 		// ##### Watch files
 		watch: {
 			sass: {
@@ -312,9 +312,6 @@ module.exports = function(grunt) {
 	// * `grunt server` 
 	// > Start server with live reload
 	grunt.registerTask('server', ['browserSync']);
-	// * `grunt wipe` 
-	// > Cleans HTML folder
-	grunt.registerTask('wipe', ['clean:site']);
 	// * `grunt build` 
 	// > Build HTML
 	grunt.registerTask('build', ['assemble']);
@@ -346,7 +343,7 @@ module.exports = function(grunt) {
 
 	// * `grunt make` 
 	// > Builds the entire site
-	grunt.registerTask('make', ['wipe', 'build', 'scripts', 'styles']);
+	grunt.registerTask('make', ['clean:site', 'build', 'scripts', 'styles']);
 	// * `grunt run` 
 	// > Starts the server and watches files
 	grunt.registerTask('run', ['concurrent:run']);
