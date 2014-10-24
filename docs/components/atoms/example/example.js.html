@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"><head><title>components/atoms/example/example.js</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="components/atoms/example/example.js"><meta name="groc-project-path" content="components/atoms/example/example.js"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">components/atoms/example/example.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>define dependencies</p>
+</blockquote></div></div><div class="code"><div class="wrapper">define([],  <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>example</p>
+</blockquote></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">var</span> example = {
+		greet: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name)</span>{</span>
+			<span class="hljs-keyword">if</span>(!name){
+				name = <span class="hljs-string">"world"</span>;
+			}
+			<span class="hljs-keyword">return</span> <span class="hljs-string">'hello, '</span>+name+<span class="hljs-string">'!'</span>;
+		}
+	};</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>return the component</p>
+</blockquote></div></div><div class="code"><div class="wrapper">	<span class="hljs-keyword">return</span> example;
+});</div></div></div></div></body></html>

@@ -16,10 +16,6 @@
     <!-- Webfonts -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,300,600,700">
 
-    <!--[if lt IE 9]>
-      <script src="assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
     <!--[if lt IE 9]>
@@ -28,21 +24,264 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-  </head>
-  <body>
-    <div class="container">
-      <h1 id="home">Welcome!</h1>
-      <p class="lead">A boilerplate with focus on atomic design principles</p>
-      <h3>Header Organism</h3>
-      <input type="text" autocomplete="no" value="search-term" placeholder="Search here" />
-      <a href="javascript:void(0);" id="" class="button">Search</a> 
-    </div>
 
-    <!-- Footer -->
-    <footer class="container" role="contentinfo">
+    <!--
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+<link rel="shortcut icon" href="favicon.ico">
+-->
+  </head>
+  <body class="">
+    <header>
+      <div class="bar">
+        <div class="menu-marker"></div>
+      </div>
+      <div class="row">
+        <div class="columns large-3">
+          <div class="logo">
+            <img src="assets/images/logo.svg" alt="logo" />
+            <h1>company</h1>
+          </div>
+        </div>
+        <div class="columns large-7">
+          <nav>
+            <ul class="menu">
+              <li>
+                <a href="#">CATS</a> 
+                <ul class="dropdown">
+                  <li> <a href="#">Meow</a>  </li>
+                  <li> <a href="#">Mjau</a>  </li>
+                  <li> <a href="#">Miao</a>  </li>
+                </ul>
+                <div class="campaign">
+                  <img src="assets/images/cat.png" />
+                  <span>new collection<br />spring/summer 2015</span> 
+                </div>
+              </li>
+              <li> <a href="#">DOGS</a>  </li>
+              <li> <a href="#">RABBITS</a>  </li>
+              <li> <a href="#">POSSUMS</a>  </li>
+              <li> <a href="#">WHALES</a>  </li>
+              <li> <a href="#">CARROTS</a>  </li>
+              <li><span class='icon icon-search'></span> 
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="columns large-2">
+          <nav>
+            <ul class="submenu">
+              <li> <a href="#">About</a>  </li>
+              <li> <a href="#"> <span class='icon icon-user'></span> Profile </a>  </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <article>
+      <div class="row">
+        <div class="columns large-4">
+          <a href="#" class="block product-item">
+            <div class="image">
+              <img src="assets/images/cat.png" alt="cat" />
+              <div class="badge badge-play"></div>
+            </div>
+            <div class="text">
+              <span>The winter essential</span> 
+              <h3>Cuddlebuddy</h3>
+              <span>+ colours</span> 
+            </div>
+          </a> 
+          <a href="#" class="block product-item">
+            <div class="image">
+              <img src="assets/images/cat4.png" alt="cat" />
+              <div class="badge badge-play"></div>
+            </div>
+            <div class="text">
+              <span>check out</span> 
+              <h3>The kitty loafer</h3>
+              <span>+ colours</span> 
+            </div>
+          </a> 
+        </div>
+        <div class="columns large-7">
+          <div class="block block-large">
+            <div class="image">
+              <img src="assets/images/cat2.jpeg" alt="cat" />
+              <div class="badge badge-style"></div>
+            </div>
+            <div class="text">
+              <h3>Cuddle in style</h3>
+              <p>1 cat - 4 cuddles amety vellumsen sita pellumsen. Lorem ipsum dolor sit amet kitty cuddle. Cat lorem sita vellumsen cuddlelife.</p>
+              <a href="#" class="button">Cuddle the story</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-12">
+          <ul class="list-grid-3">
+            <li>
+              <a href="#" class="block block-hidden">
+                <div class="block badge">
+                  <p>
+                    Cats are cute
+                    <br />Cats are fluffy
+                    <br />
+                  </p>
+                </div>
+                <div class="text">
+                  <span>tax and cuddle terms</span> 
+                  <h3>see all terms</h3>
+                </div>
+              </a> 
+            </li>
+            <li>
+              <a href="#" class="block product-item block-hidden">
+                <div class="image">
+                  <img src="assets/images/cat.png" alt="cat" />
+                  <div class="badge badge-fw"></div>
+                </div>
+                <div class="text">
+                  <span>Comfy</span> 
+                  <h3>Charles Fluff the II</h3>
+                  <span>+ colours</span> 
+                </div>
+              </a> 
+            </li>
+            <li>
+              <a href="#" class="block product-item block-hidden">
+                <div class="image">
+                  <img src="assets/images/cat4.png" alt="cat" />
+                </div>
+                <div class="text">
+                  <span>Spring/summer 2014</span> 
+                  <h3>Catnip</h3>
+                  <span>+ colours</span> 
+                </div>
+              </a> 
+            </li>
+            <li>
+              <a href="#" class="block product-item block-hidden">
+                <div class="image">
+                  <img src="assets/images/cat.png" alt="cat" />
+                </div>
+                <div class="text">
+                  <span>Check out</span> 
+                  <h3>Fluffycat</h3>
+                  <span>+ colours</span> 
+                </div>
+              </a> 
+            </li>
+            <li>
+              <a href="#" class="block product-item ">
+                <div class="image">
+                  <img src="assets/images/cat.png" alt="cat" />
+                  <div class="badge badge-new"></div>
+                </div>
+                <div class="text">
+                  <span>just in for fall 2014</span> 
+                  <h3>Kitty</h3>
+                  <span>+ colours</span> 
+                </div>
+              </a> 
+            </li>
+            <li>
+              <a href="#" class="block product-item ">
+                <div class="image">
+                  <img src="assets/images/cat4.png" alt="cat" />
+                  <div class="badge badge-play"></div>
+                </div>
+                <div class="text">
+                  <span>keeping you cuddled</span> 
+                  <h3>Alberto cat</h3>
+                  <span>+ colours</span> 
+                </div>
+              </a> 
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-4">
+          <a href="#" class="block product-item block-hidden">
+            <div class="image">
+              <img src="assets/images/cat.png" alt="cat" />
+              <div class="badge badge-fw"></div>
+            </div>
+            <div class="text">
+              <span>Fall/winter 14</span> 
+              <h3>Cat's outerwear</h3>
+            </div>
+          </a> 
+        </div>
+        <div class="columns large-7">
+          <div class="block block-large block-hidden">
+            <div class="image">
+              <img src="assets/images/cat3.jpeg" alt="cat" />
+              <div class="badge badge-style"></div>
+            </div>
+            <div class="text">
+              <h3>Kitty stretching in the milan shade</h3>
+              <p>Lorem amety vellumsen sita pellumsen. Lorem ipsum dolor sit amet kitty stretch. Kitty lorem sita vellumsen citylife.</p>
+              <a href="#" class="button">Like the story</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <footer>
+      <h2>How may we help you?</h2>
+      <div class="row">
+        <div class="columns large-4">
+          <h4>customer service</h4>
+          <ul class="list-centered">
+            <li> <a href="#">Shipping information</a>  </li>
+            <li> <a href="#">Return policy</a>  </li>
+            <li> <a href="#">F.A.Q.</a>  </li>
+            <li> <a href="#">Terms and conditions</a>  </li>
+            <li> <a href="tel:004758679534">Customer service (+47) 58 67 95 34</a>  </li>
+          </ul>
+          <hr />
+        </div>
+        <div class="columns large-2">
+          <h4>company</h4>
+          <ul class="list-centered">
+            <li> <a href="#">About</a>  </li>
+            <li> <a href="#">Press</a>  </li>
+            <li> <a href="#">Contact us</a>  </li>
+            <li> <a href="#">Store locator</a>  </li>
+          </ul>
+          <hr />
+        </div>
+        <div class="columns large-2">
+          <h4>social</h4>
+          <span>Follow and like us</span> 
+          <ul class="list-grid">
+            <li>
+              <a href="#"> <span class='icon icon-facebook'></span>  </a> 
+            </li>
+            <li>
+              <a href="#"> <span class='icon icon-twitter'></span>  </a> 
+            </li>
+            <li>
+              <a href="#"> <span class='icon icon-youtube'></span>  </a> 
+            </li>
+            <li>
+              <a href="#"> <span class='icon icon-instagram'></span>  </a> 
+            </li>
+          </ul>
+          <hr />
+        </div>
+        <div class="columns large-4">
+          <h4>stay up-to-date</h4>
+          <span>Receive news, the latest offers and new arrivals</span> 
+          <div class="form">
+            <input type="email" placeholder="Your email here" />
+            <input type="submit" class="button" value="SEND" />
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- JS and analytics only. -->

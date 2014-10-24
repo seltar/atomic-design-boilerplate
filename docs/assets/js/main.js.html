@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/js/main.js</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="assets/js/main.js"><meta name="groc-project-path" content="assets/js/main.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/js/main.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-built_in">require</span>([<span class="hljs-string">"config"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+	<span class="hljs-built_in">require</span>([<span class="hljs-string">"jquery"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($)</span> {</span>
+
+		$(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Scroll functionality</p></div></div><div class="code"><div class="wrapper">			<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateElements</span><span class="hljs-params">()</span>{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Header</p>
+<blockquote>
+<p>the distance we&#39;ve scrolled from the top</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				<span class="hljs-keyword">var</span> distanceY = $(window).scrollTop(),</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>start shrinking X px from the top</p>
+</blockquote></div></div><div class="code"><div class="wrapper">					shrinkOn = <span class="hljs-number">50</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>target</p>
+</blockquote></div></div><div class="code"><div class="wrapper">					header = $(<span class="hljs-string">"header"</span>);
+
+				<span class="hljs-keyword">if</span> (distanceY &gt; shrinkOn) {
+					header.addClass(<span class="hljs-string">"smaller"</span>);
+				} <span class="hljs-keyword">else</span> {
+					<span class="hljs-keyword">if</span> (header.hasClass(<span class="hljs-string">"smaller"</span>)) {
+						header.removeClass(<span class="hljs-string">"smaller"</span>);
+					}
+				}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Elements</p></div></div><div class="code"><div class="wrapper">				$(<span class="hljs-string">'.block-hidden'</span>).each( <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(i)</span>{</span>
+
+					<span class="hljs-keyword">var</span> bottom_of_object = $(<span class="hljs-keyword">this</span>).offset().top + $(<span class="hljs-keyword">this</span>).outerHeight() / <span class="hljs-number">2</span>;
+					<span class="hljs-keyword">var</span> bottom_of_window = $(window).scrollTop() + $(window).height();</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>if the object is halfway visible, remove the hidden class allowing it to transition in</p></div></div><div class="code"><div class="wrapper">					<span class="hljs-keyword">if</span>( bottom_of_window &gt; bottom_of_object ){
+						$(<span class="hljs-keyword">this</span>).removeClass(<span class="hljs-string">"block-hidden"</span>);
+					}
+
+				}); 
+
+			}
+			updateElements();
+
+			$(window).on(<span class="hljs-string">"scroll"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span>{</span>
+				updateElements();
+			});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Menu Hover functionality</p></div></div><div class="code"><div class="wrapper">			<span class="hljs-keyword">var</span> marker = $(<span class="hljs-string">"header .menu-marker"</span>),
+				menuAnimTimer = <span class="hljs-literal">null</span>;
+			$(<span class="hljs-string">"header .menu li"</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>kill the timer</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				clearTimeout(menuAnimTimer);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>get the link position</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				<span class="hljs-keyword">var</span> left = $(<span class="hljs-keyword">this</span>).offset().left,
+					width = $(<span class="hljs-keyword">this</span>).outerWidth();</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>translate the marker to that position, letting it transition with css</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				marker.css({ left: left, width: width });
+			}, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>set a timer to hide the marker</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				menuAnimTimer = setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+					marker.css(<span class="hljs-string">"width"</span>, <span class="hljs-number">0</span>);
+				}, <span class="hljs-number">1000</span>);
+			});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Menu Dropdown functionality</p></div></div><div class="code"><div class="wrapper">			
+			$(<span class="hljs-string">"header .menu &gt; li &gt; a"</span>).on(<span class="hljs-string">'click'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span>{</span>
+				e.preventDefault();
+				e.stopImmediatePropagation();
+				$(<span class="hljs-string">"header .menu &gt; li &gt; a"</span>).removeClass(<span class="hljs-string">"active"</span>);
+				<span class="hljs-keyword">if</span>(!$(<span class="hljs-keyword">this</span>).next(<span class="hljs-string">".dropdown"</span>).children().length){
+					<span class="hljs-keyword">return</span>;
+				}
+				<span class="hljs-keyword">if</span>(!$(<span class="hljs-keyword">this</span>).hasClass(<span class="hljs-string">"active"</span>)){
+					$(<span class="hljs-keyword">this</span>).addClass(<span class="hljs-string">"active"</span>);
+				}
+			});
+			$(document).on(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span>{</span>
+				e.preventDefault();
+				$(<span class="hljs-string">"header .menu &gt; li &gt; a"</span>).removeClass(<span class="hljs-string">"active"</span>);
+			});
+		});
+	});
+});</div></div></div></div></body></html>

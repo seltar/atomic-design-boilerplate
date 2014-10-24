@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/sass/core/_global.scss</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="assets/sass/core/_global.scss"><meta name="groc-project-path" content="assets/sass/core/_global.scss"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/sass/core/_global.scss</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>Foundation by ZURB
+foundation.zurb.com
+Licensed under MIT Open Source</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"functions"</span>;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Foundation Variables</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Data attribute namespace
+styles get applied to [data-mysite-plugin], etc</p></div></div><div class="code"><div class="wrapper">$namespace<span class="hljs-value">: false !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>The default font-size is set to 100% of the browser style sheet (usually 16px)
+for compatibility with browser-based text zoom or user-set defaults.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+If you want your base font-size to be different and not have it affect the grid breakpoints,
+set $rem-base to $base-font-size and make sure $base-font-size is a px value.</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-tag">base</span>-<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">100</span>% !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>$base-line-height is 24px while $base-font-size is 16px</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-tag">base</span>-<span class="hljs-attribute">line-height</span><span class="hljs-value">: <span class="hljs-number">1.5</span> !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Global Foundation Mixins</p></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to control border radius.
+$radius - Default: $global-radius || 4px</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> radius</span>($radius:$global-radius) {</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $radius {</span>
+    <span class="hljs-attribute">border-radius</span><span class="hljs-value">: $radius;</span>
+  }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to create equal side border radius on elements.
+$side - Options: left, right, top, bottom</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> side-radius</span>($side, $radius:$global-radius) {</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> ($side ==<span class="hljs-preprocessor"> left</span><span class="hljs-preprocessor"> or</span> $side ==<span class="hljs-preprocessor"> right</span>) {</span>
+    -webkit-<span class="hljs-attribute">border-bottom</span>-#{$side}-radius<span class="hljs-value">: $radius;</span>
+    -webkit-<span class="hljs-attribute">border-top</span>-#{$side}-radius<span class="hljs-value">: $radius;</span>
+    <span class="hljs-attribute">border-bottom</span>-#{$side}-radius<span class="hljs-value">: $radius;</span>
+    <span class="hljs-attribute">border-top</span>-#{$side}-radius<span class="hljs-value">: $radius;</span>
+  } <span class="hljs-at_rule">@<span class="hljs-keyword">else</span> {</span>
+    -webkit-#{$side}-<span class="hljs-attribute">left</span>-radius<span class="hljs-value">: $radius;</span>
+    -webkit-#{$side}-<span class="hljs-attribute">right</span>-radius<span class="hljs-value">: $radius;</span>
+    <span class="hljs-attribute">border</span>-#{$side}-<span class="hljs-attribute">left</span>-radius<span class="hljs-value">: $radius;</span>
+    <span class="hljs-attribute">border</span>-#{$side}-<span class="hljs-attribute">right</span>-radius<span class="hljs-value">: $radius;</span>
+  }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We can control whether or not we have inset shadows edges.
+$active - Default: true, Options: false</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> inset-shadow</span>($active:true) {</span>
+  <span class="hljs-attribute">box-shadow</span><span class="hljs-value">: $shiny-edge-size $shiny-edge-color inset;</span>
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $active {</span> &amp;<span class="hljs-pseudo">:active</span> {
+    <span class="hljs-attribute">box-shadow</span><span class="hljs-value">: $shiny-edge-size $shiny-edge-active-color inset;</span> } }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to add transitions to elements
+$property - Default: all, Options: <a href="http://www.w3.org/TR/css3-transitions/#animatable-properties">http://www.w3.org/TR/css3-transitions/#animatable-properties</a>
+$speed - Default: 300ms
+$ease - Default:ease-out, Options: <a href="http://css-tricks.com/almanac/properties/t/transition-timing-function/">http://css-tricks.com/almanac/properties/t/transition-timing-function/</a></span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> single-transition</span>($property:all, $speed:<span class="hljs-number">300</span>ms, $ease:ease-out) {</span>
+  <span class="hljs-attribute">transition</span><span class="hljs-value">: $property $speed $ease;</span>
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to add box-sizing across browser prefixes</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> box-sizing</span>($type:border-box) {</span>
+  -webkit-<span class="hljs-attribute">box-sizing</span><span class="hljs-value">: $type;</span> <span class="hljs-comment">// Android &lt; 2.3, iOS &lt; 4</span>
+     -moz-<span class="hljs-attribute">box-sizing</span><span class="hljs-value">: $type;</span> <span class="hljs-comment">// Firefox &lt; 29</span>
+          <span class="hljs-attribute">box-sizing</span><span class="hljs-value">: $type;</span> <span class="hljs-comment">// Chrome, IE 8+, Opera, Safari 5.1</span>
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to create isosceles triangles
+$triangle-size - Used to set border-size. No default, set a px or em size.
+$triangle-color - Used to set border-color which makes up triangle. No default
+$triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> css-triangle</span>($triangle-size, $triangle-color, $triangle-direction) {</span>
+  <span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">""</span>;</span>
+  <span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
+  <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+  <span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+  <span class="hljs-attribute">border</span><span class="hljs-value">: inset $triangle-size;</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> ($triangle-direction ==<span class="hljs-preprocessor"> top</span>) {</span>
+    <span class="hljs-attribute">border-color</span><span class="hljs-value">: $triangle-color transparent transparent transparent;</span>
+    <span class="hljs-attribute">border-top-style</span><span class="hljs-value">: solid;</span>
+  }
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> ($triangle-direction ==<span class="hljs-preprocessor"> bottom</span>) {</span>
+    <span class="hljs-attribute">border-color</span><span class="hljs-value">: transparent transparent $triangle-color transparent;</span>
+    <span class="hljs-attribute">border-bottom-style</span><span class="hljs-value">: solid;</span>
+  }
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> ($triangle-direction ==<span class="hljs-preprocessor"> left</span>) {</span>
+    <span class="hljs-attribute">border-color</span><span class="hljs-value">: transparent transparent transparent $triangle-color;</span>
+    <span class="hljs-attribute">border-left-style</span><span class="hljs-value">: solid;</span>
+  }
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> ($triangle-direction ==<span class="hljs-preprocessor"> right</span>) {</span>
+    <span class="hljs-attribute">border-color</span><span class="hljs-value">: transparent $triangle-color transparent transparent;</span>
+    <span class="hljs-attribute">border-right-style</span><span class="hljs-value">: solid;</span>
+  }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
+$width - Width of hamburger icon in rem
+$left - If false, icon will be centered horizontally || explicitly set value in rem
+$top - If false, icon will be centered vertically || explicitly set value in rem
+$thickness - thickness of lines in hamburger icon, set value in px
+$gap - spacing between the lines in hamburger icon, set value in px
+$color - icon color
+$hover-color - icon color during hover
+$offcanvas - Set to true of @include in offcanvas</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> hamburger</span>($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {</span>
+  <span class="hljs-tag">span</span><span class="hljs-pseudo">::after</span> {
+    <span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">""</span>;</span>
+    <span class="hljs-attribute">position</span><span class="hljs-value">: absolute;</span>
+    <span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
+    <span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+
+    <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $offcanvas {</span>
+      <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $top {</span>
+        <span class="hljs-attribute">top</span><span class="hljs-value">: $top;</span>
+      }
+      <span class="hljs-at_rule">@<span class="hljs-keyword">else</span> {</span>
+        <span class="hljs-attribute">top</span><span class="hljs-value">: <span class="hljs-number">50</span>%;</span>
+        <span class="hljs-attribute">margin-top</span><span class="hljs-value">: -$width/<span class="hljs-number">2</span>;</span>
+      }
+      <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $left {</span>
+        <span class="hljs-attribute">left</span><span class="hljs-value">: $left;</span>
+      }
+      <span class="hljs-at_rule">@<span class="hljs-keyword">else</span> {</span>
+        <span class="hljs-attribute">left</span><span class="hljs-value">: ($tabbar-menu-icon-width - $width)/<span class="hljs-number">2</span>;</span>
+      }
+    }
+    <span class="hljs-at_rule">@<span class="hljs-keyword">else</span> {</span>
+      <span class="hljs-attribute">top</span><span class="hljs-value">: <span class="hljs-number">50</span>%;</span>
+      <span class="hljs-attribute">margin-top</span><span class="hljs-value">: -($width/<span class="hljs-number">2</span>);</span>
+      #{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: $topbar-link-padding;</span>
+    }
+
+    <span class="hljs-attribute">box-shadow</span><span class="hljs-value">:
+      <span class="hljs-number">0</span> <span class="hljs-number">0</span>px <span class="hljs-number">0</span> $thickness $color,
+      <span class="hljs-number">0</span> $gap + $thickness <span class="hljs-number">0</span> $thickness $color,
+      <span class="hljs-number">0</span> (<span class="hljs-number">2</span> * $gap + <span class="hljs-number">2</span>*$thickness) <span class="hljs-number">0</span> $thickness $color;</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: $width;</span>
+  }
+  <span class="hljs-tag">span</span><span class="hljs-pseudo">:hover</span><span class="hljs-pseudo">:after</span> {
+    <span class="hljs-attribute">box-shadow</span><span class="hljs-value">:
+      <span class="hljs-number">0</span> <span class="hljs-number">0</span>px <span class="hljs-number">0</span> $thickness $hover-color,
+      <span class="hljs-number">0</span> $gap + $thickness <span class="hljs-number">0</span> $thickness $hover-color,
+      <span class="hljs-number">0</span> (<span class="hljs-number">2</span> * $gap + <span class="hljs-number">2</span>*$thickness) <span class="hljs-number">0</span> $thickness $hover-color;</span>
+  }
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use this to do clear floats</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> clearfix</span> {</span>
+  &amp;<span class="hljs-pseudo">:before</span>, &amp;<span class="hljs-pseudo">:after</span> { <span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">" "</span>;</span> <span class="hljs-attribute">display</span><span class="hljs-value">: table;</span> }
+  &amp;<span class="hljs-pseudo">:after</span> { <span class="hljs-attribute">clear</span><span class="hljs-value">: both;</span> }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to add a glowing effect to block elements
+$selector - Used for selector state. Default: focus, Options: hover, active, visited
+$fade-time - Default: 300ms
+$glowing-effect-color - Default: fade-out($primary-color, .25)</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> block-glowing-effect</span>($selector:focus, $fade-time:<span class="hljs-number">300</span>ms, $glowing-effect-color:<span class="hljs-function">fade-out($primary-color, .<span class="hljs-number">25</span>)</span>) {</span>
+  <span class="hljs-attribute">transition</span><span class="hljs-value">: box-shadow $fade-time, border-color $fade-time ease-in-out;</span>
+
+  &amp;<span class="hljs-value">:#{$selector} {
+    box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5</span>px $glowing-effect-color;</span>
+    <span class="hljs-attribute">border-color</span><span class="hljs-value">: $glowing-effect-color;</span>
+  }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins We use this to translate elements in 2D
+$horizontal: Default: 0
+$vertical: Default: 0</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> translate2d</span>($horizontal:<span class="hljs-number">0</span>, $vertical:<span class="hljs-number">0</span>) {</span>
+  <span class="hljs-attribute">transform</span><span class="hljs-value">: translate($horizontal,$vertical)
+}
+</span></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins Makes an element visually hidden, but accessible. and see <a href="http://snook.ca/archives/html_and_css/hiding-content-for-accessibility">http://snook.ca/archives/html_and_css/hiding-content-for-accessibility</a></span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> element-invisible</span> {</span>
+  <span class="hljs-attribute">position</span><span class="hljs-value">: absolute <span class="hljs-important">!important</span>;</span>
+  <span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">1</span>px;</span>
+  <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">1</span>px;</span>
+  <span class="hljs-attribute">overflow</span><span class="hljs-value">: hidden;</span>
+  <span class="hljs-attribute">clip</span><span class="hljs-value">: rect(<span class="hljs-number">1</span>px, <span class="hljs-number">1</span>px, <span class="hljs-number">1</span>px, <span class="hljs-number">1</span>px);</span>
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins Turns off the element-invisible effect.</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> element-invisible-off</span> {</span>
+  <span class="hljs-attribute">position</span><span class="hljs-value">: static <span class="hljs-important">!important</span>;</span>
+  <span class="hljs-attribute">height</span><span class="hljs-value">: auto;</span>
+  <span class="hljs-attribute">width</span><span class="hljs-value">: auto;</span>
+  <span class="hljs-attribute">overflow</span><span class="hljs-value">: visible;</span>
+  <span class="hljs-attribute">clip</span><span class="hljs-value">: auto;</span>
+}
+
+$white         <span class="hljs-value">: <span class="hljs-hexcolor">#FFFFFF</span> !default;</span>
+$ghost         <span class="hljs-value">: <span class="hljs-hexcolor">#FAFAFA</span> !default;</span>
+$snow          <span class="hljs-value">: <span class="hljs-hexcolor">#F9F9F9</span> !default;</span>
+$vapor         <span class="hljs-value">: <span class="hljs-hexcolor">#F6F6F6</span> !default;</span>
+$white-smoke   <span class="hljs-value">: <span class="hljs-hexcolor">#F5F5F5</span> !default;</span>
+$silver        <span class="hljs-value">: <span class="hljs-hexcolor">#EFEFEF</span> !default;</span>
+$smoke         <span class="hljs-value">: <span class="hljs-hexcolor">#EEEEEE</span> !default;</span>
+$gainsboro     <span class="hljs-value">: <span class="hljs-hexcolor">#DDDDDD</span> !default;</span>
+$iron          <span class="hljs-value">: <span class="hljs-hexcolor">#CCCCCC</span> !default;</span>
+$<span class="hljs-tag">base</span>          <span class="hljs-value">: <span class="hljs-hexcolor">#AAAAAA</span> !default;</span>
+$aluminum      <span class="hljs-value">: <span class="hljs-hexcolor">#999999</span> !default;</span>
+$jumbo         <span class="hljs-value">: <span class="hljs-hexcolor">#888888</span> !default;</span>
+$monsoon       <span class="hljs-value">: <span class="hljs-hexcolor">#777777</span> !default;</span>
+$steel         <span class="hljs-value">: <span class="hljs-hexcolor">#666666</span> !default;</span>
+$charcoal      <span class="hljs-value">: <span class="hljs-hexcolor">#555555</span> !default;</span>
+$tuatara       <span class="hljs-value">: <span class="hljs-hexcolor">#444444</span> !default;</span>
+$oil           <span class="hljs-value">: <span class="hljs-hexcolor">#333333</span> !default;</span>
+$jet           <span class="hljs-value">: <span class="hljs-hexcolor">#222222</span> !default;</span>
+$black         <span class="hljs-value">: <span class="hljs-hexcolor">#000000</span> !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these as default colors throughout</p></div></div><div class="code"><div class="wrapper">$primary-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#008CBA</span> !default;</span>   <span class="hljs-comment">// bondi-blue</span>
+$secondary-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#e7e7e7</span> !default;</span> <span class="hljs-comment">// white-lilac</span>
+$alert-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#f04124</span> !default;</span>     <span class="hljs-comment">// cinnabar</span>
+$success-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#43AC6A</span> !default;</span>   <span class="hljs-comment">// sea-green</span>
+$warning-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#f08a24</span> !default;</span>   <span class="hljs-comment">// carrot</span>
+$info-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#a0d3e8</span> !default;</span>      <span class="hljs-comment">// cornflower</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these to define default font stacks</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-attribute">font-family</span>-sans-serif<span class="hljs-value">: <span class="hljs-string">"Helvetica Neue"</span>, Helvetica, Roboto, Arial, sans-serif !default;</span>
+$<span class="hljs-attribute">font-family</span>-serif<span class="hljs-value">: Georgia, Cambria, <span class="hljs-string">"Times New Roman"</span>, Times, serif !default;</span>
+$<span class="hljs-attribute">font-family</span>-monospace<span class="hljs-value">: Consolas, <span class="hljs-string">"Liberation Mono"</span>, Courier, monospace !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these to define default font weights</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-attribute">font-weight</span>-<span class="hljs-attribute">normal</span><span class="hljs-value">: normal !default;</span>
+$<span class="hljs-attribute">font-weight</span>-<span class="hljs-value">bold</span><span class="hljs-value">: bold !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these to control various global styles</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-tag">body</span>-bg<span class="hljs-value">: <span class="hljs-hexcolor">#fff</span> !default;</span>
+$<span class="hljs-tag">body</span>-<span class="hljs-attribute">font</span>-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#222</span> !default;</span>
+$<span class="hljs-tag">body</span>-<span class="hljs-attribute">font-family</span><span class="hljs-value">: $font-family-sans-serif !default;</span>
+$<span class="hljs-tag">body</span>-<span class="hljs-attribute">font-weight</span><span class="hljs-value">: $font-weight-normal !default;</span>
+$<span class="hljs-tag">body</span>-<span class="hljs-attribute">font-style</span><span class="hljs-value">: normal !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use this to control font-smoothing</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-attribute">font</span>-smoothing<span class="hljs-value">: antialiased !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these to control text direction settings</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-value">text</span>-<span class="hljs-attribute">direction</span><span class="hljs-value">: ltr !default;</span>
+$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span><span class="hljs-value">: left !default;</span>
+$opposite-<span class="hljs-attribute">direction</span><span class="hljs-value">: right !default;</span></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> if $text-direction == ltr {
+  $default-float: left;
+  $opposite-direction: right;
+} @else {
+  $default-float: right;
+  $opposite-direction: left;
+}</span></p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these to make sure border radius matches unless we want it different.</p></div></div><div class="code"><div class="wrapper">$global-radius<span class="hljs-value">: <span class="hljs-number">3</span>px !default;</span>
+$global-rounded<span class="hljs-value">: <span class="hljs-number">1000</span>px !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use these to control inset shadow shiny edges and depressions.</p></div></div><div class="code"><div class="wrapper">$shiny-edge-size<span class="hljs-value">: <span class="hljs-number">0</span> <span class="hljs-number">1</span>px <span class="hljs-number">0</span> !default;</span>
+$shiny-edge-<span class="hljs-attribute">color</span><span class="hljs-value">: rgba(<span class="hljs-hexcolor">#fff</span>, .<span class="hljs-number">5</span>) !default;</span>
+$shiny-edge-active-<span class="hljs-attribute">color</span><span class="hljs-value">: rgba(<span class="hljs-hexcolor">#000</span>, .<span class="hljs-number">2</span>) !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>We use this to control whether or not CSS classes come through in the gem files.</p></div></div><div class="code"><div class="wrapper">$include-<span class="hljs-tag">html</span>-classes<span class="hljs-value">: true !default;</span>
+$include-print-styles<span class="hljs-value">: true !default;</span>
+$include-<span class="hljs-tag">html</span>-global-classes<span class="hljs-value">: $include-html-classes !default;</span>
+
+$column-gutter<span class="hljs-value">: rem-calc(<span class="hljs-number">30</span>) !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Media Query Ranges</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-tag">small</span>-range<span class="hljs-value">: (<span class="hljs-number">0</span>em, <span class="hljs-number">40</span>em) !default;</span>
+$<span class="hljs-value">medium</span>-range<span class="hljs-value">: (<span class="hljs-number">40.063</span>em, <span class="hljs-number">64</span>em) !default;</span>
+$large-range<span class="hljs-value">: (<span class="hljs-number">64.063</span>em, <span class="hljs-number">90</span>em) !default;</span>
+$xlarge-range<span class="hljs-value">: (<span class="hljs-number">90.063</span>em, <span class="hljs-number">120</span>em) !default;</span>
+$xxlarge-range<span class="hljs-value">: (<span class="hljs-number">120.063</span>em, <span class="hljs-number">99999999</span>em) !default;</span>
+
+
+$screen<span class="hljs-value">: <span class="hljs-string">"only screen"</span> !default;</span>
+
+$landscape<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (orientation: landscape)"</span> !default;</span>
+$portrait<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (orientation: portrait)"</span> !default;</span>
+
+$<span class="hljs-tag">small</span>-up<span class="hljs-value">: $screen !default;</span>
+$<span class="hljs-tag">small</span>-only<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (max-width: #{upper-bound($small-range)})"</span> !default;</span>
+
+$<span class="hljs-value">medium</span>-up<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($medium-range)})"</span> !default;</span>
+$<span class="hljs-value">medium</span>-only<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})"</span> !default;</span>
+
+$large-up<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($large-range)})"</span> !default;</span>
+$large-only<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})"</span> !default;</span>
+
+$xlarge-up<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($xlarge-range)})"</span> !default;</span>
+$xlarge-only<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})"</span> !default;</span>
+
+$xxlarge-up<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($xxlarge-range)})"</span> !default;</span>
+$xxlarge-only<span class="hljs-value">: <span class="hljs-string">"#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})"</span> !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Legacy</p></div></div><div class="code"><div class="wrapper">$<span class="hljs-tag">small</span><span class="hljs-value">: $medium-up;</span>
+$<span class="hljs-value">medium</span><span class="hljs-value">: $medium-up;</span>
+$large<span class="hljs-value">: $large-up;</span>
+
+
+<span class="hljs-comment">//We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet</span>
+$<span class="hljs-attribute">cursor</span>-<span class="hljs-attribute">auto</span>-value<span class="hljs-value">: auto !default;</span>
+$<span class="hljs-attribute">cursor</span>-<span class="hljs-value">crosshair</span>-value<span class="hljs-value">: crosshair !default;</span>
+$<span class="hljs-attribute">cursor</span>-<span class="hljs-value">default</span>-value<span class="hljs-value">: default !default;</span>
+$<span class="hljs-attribute">cursor</span>-<span class="hljs-value">pointer</span>-value<span class="hljs-value">: pointer !default;</span>
+$<span class="hljs-attribute">cursor</span>-<span class="hljs-value">help</span>-value<span class="hljs-value">: help !default;</span>
+$<span class="hljs-attribute">cursor</span>-<span class="hljs-value">text</span>-value<span class="hljs-value">: text !default;</span>
+
+
+<span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> exports</span>(<span class="hljs-string">"global"</span>) {</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Meta styles are included in all builds, as they are a dependancy of the Javascript.
+Used to provide media query values for javascript components.
+Forward slash placed around everything to convince PhantomJS to read the value.</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-version</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"/{{VERSION}}/"</span>;</span>
+  }
+
+  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-mq-small</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"/"</span> + unquote($small-up) + <span class="hljs-string">"/"</span>;</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: lower-bound($small-range);</span>
+  }
+
+  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-mq-medium</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"/"</span> + unquote($medium-up) + <span class="hljs-string">"/"</span>;</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: lower-bound($medium-range);</span>
+  }
+
+  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-mq-large</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"/"</span> + unquote($large-up) + <span class="hljs-string">"/"</span>;</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: lower-bound($large-range);</span>
+  }
+
+  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-mq-xlarge</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"/"</span> + unquote($xlarge-up) + <span class="hljs-string">"/"</span>;</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: lower-bound($xlarge-range);</span>
+  }
+
+  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-mq-xxlarge</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"/"</span> + unquote($xxlarge-up) + <span class="hljs-string">"/"</span>;</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: lower-bound($xxlarge-range);</span>
+  }
+
+  <span class="hljs-tag">meta</span><span class="hljs-class">.foundation-data-attribute-namespace</span> {
+    <span class="hljs-attribute">font-family</span><span class="hljs-value">: #{$namespace};</span>
+  }
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $<span class="hljs-keyword">include</span>-html-global-classes {</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Must be 100% for off canvas to work</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-tag">html</span>, <span class="hljs-tag">body</span> { <span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Set box-sizing globally to handle padding and border widths</p></div></div><div class="code"><div class="wrapper">    *,
+    *<span class="hljs-pseudo">:before</span>,
+    *<span class="hljs-pseudo">:after</span> {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> box-sizing</span>(border-box);</span>
+    }
+
+    <span class="hljs-tag">html</span>,
+    <span class="hljs-tag">body</span> { <span class="hljs-attribute">font-size</span><span class="hljs-value">: $base-font-size;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Default body styles</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-tag">body</span> {
+      <span class="hljs-attribute">background</span><span class="hljs-value">: $body-bg;</span>
+      <span class="hljs-attribute">color</span><span class="hljs-value">: $body-font-color;</span>
+      <span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+      <span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+      <span class="hljs-attribute">font-family</span><span class="hljs-value">: $body-font-family;</span>
+      <span class="hljs-attribute">font-weight</span><span class="hljs-value">: $body-font-weight;</span>
+      <span class="hljs-attribute">font-style</span><span class="hljs-value">: $body-font-style;</span>
+      <span class="hljs-attribute">line-height</span><span class="hljs-value">: $base-line-height;</span> <span class="hljs-comment">// Set to $base-line-height to take on browser default of 150%</span>
+      <span class="hljs-attribute">position</span><span class="hljs-value">: relative;</span>
+      <span class="hljs-attribute">cursor</span><span class="hljs-value">: $cursor-auto-value;</span>
+    }
+
+  <span class="hljs-tag">a</span><span class="hljs-pseudo">:hover</span> { <span class="hljs-attribute">cursor</span><span class="hljs-value">: $cursor-pointer-value;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Grid Defaults to get images and embeds to work properly</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-tag">img</span> { <span class="hljs-attribute">max-width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span> <span class="hljs-attribute">height</span><span class="hljs-value">: auto;</span> }
+
+    <span class="hljs-tag">img</span> { -ms-interpolation-mode<span class="hljs-value">: bicubic;</span> }
+
+    <span class="hljs-id">#map_canvas</span>,
+    <span class="hljs-class">.map_canvas</span> {
+      <span class="hljs-tag">img</span>,
+      <span class="hljs-tag">embed</span>,
+      <span class="hljs-tag">object</span> { <span class="hljs-attribute">max-width</span><span class="hljs-value">: none <span class="hljs-important">!important</span>;</span>
+      }
+    }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Miscellaneous useful HTML classes</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-class">.left</span> { <span class="hljs-attribute">float</span><span class="hljs-value">: left <span class="hljs-important">!important</span>;</span> }
+    <span class="hljs-class">.right</span> { <span class="hljs-attribute">float</span><span class="hljs-value">: right <span class="hljs-important">!important</span>;</span> }
+    <span class="hljs-class">.clearfix</span> { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> clearfix</span>;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Hide visually and from screen readers</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-class">.hide</span> {
+      <span class="hljs-attribute">display</span><span class="hljs-value">: none <span class="hljs-important">!important</span>;</span>
+      <span class="hljs-attribute">visibility</span><span class="hljs-value">: hidden;</span>
+    }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Hide visually and from screen readers, but maintain layout</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-class">.invisible</span> { <span class="hljs-attribute">visibility</span><span class="hljs-value">: hidden;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Font smoothing
+Antialiased font smoothing works best for light text on a dark background.
+Apply to single elements instead of globally to body.
+Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-class">.antialiased</span> { -webkit-<span class="hljs-attribute">font</span>-smoothing<span class="hljs-value">: antialiased;</span> -moz-osx-<span class="hljs-attribute">font</span>-smoothing<span class="hljs-value">: grayscale;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Get rid of gap under images by making them display: inline-block; by default</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-tag">img</span> {
+      <span class="hljs-attribute">display</span><span class="hljs-value">: inline-block;</span>
+      <span class="hljs-attribute">vertical-align</span><span class="hljs-value">: middle;</span>
+    }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Global resets for forms</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Make sure textarea takes on height automatically</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-tag">textarea</span> { <span class="hljs-attribute">height</span><span class="hljs-value">: auto;</span> <span class="hljs-attribute">min-height</span><span class="hljs-value">: <span class="hljs-number">50</span>px;</span> }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Make select elements 100% width by default</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-tag">select</span> { <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span> }
+  }
+}</div></div></div></div></body></html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en"><head><title>Gruntfile.js</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="Gruntfile.js"><meta name="groc-project-path" content="Gruntfile.js"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">Gruntfile.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="gruntfilejs">Gruntfile.js</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+module.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(grunt)</span> {</span>
+<span class="hljs-pi">	'use strict'</span>;
+	
+
+	<span class="hljs-keyword">var</span> production = <span class="hljs-literal">true</span>;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h1 id="project-configuration">Project configuration.</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper">	grunt.initConfig({</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="project-metadata">Project metadata</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		pkg:		grunt.file.readJSON( <span class="hljs-string">'package.json'</span> ),
+		settings:	grunt.file.readYAML( <span class="hljs-string">'settings.yml'</span> ),
+		site:		grunt.file.readYAML( <span class="hljs-string">'site.yml'</span> ),</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="before-generating-any-new-files-remove-files-from-previous-build">Before generating any new files, remove files from previous build.</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		clean: {
+			site:			[ <span class="hljs-string">'&lt;%= settings.dest %&gt;/*'</span> ],
+			docs:			[ <span class="hljs-string">'&lt;%= settings.docs %&gt;/*'</span> ],
+			screenshots:	[ <span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/screenshots/*'</span> ]
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="lint-javascript">Lint JavaScript</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		jshint: {
+			options: {
+				jshintrc: <span class="hljs-string">'.jshintrc'</span>
+			},
+			site: [
+				<span class="hljs-string">'Gruntfile.js'</span>, 
+				<span class="hljs-string">'&lt;%= settings.scripts %&gt;/**/*.js'</span>, 
+				<span class="hljs-string">'&lt;%= settings.components %&gt;/**/*.js'</span>,
+				<span class="hljs-string">'!&lt;%= settings.scripts %&gt;/vendor/**/*.js'</span> <span class="hljs-comment">// exclude vendor scripts</span>
+			]
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="compile-sass">Compile SASS</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		sass: {
+			options: {
+				sourcemap: <span class="hljs-literal">true</span>
+			},
+			site: {
+				files: {
+					<span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/css/main.css'</span>: <span class="hljs-string">'&lt;%= settings.style %&gt;/main.scss'</span>
+				}
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="generate-sass-import-file-with-all-atoms-molecules-organisms-and-templates">Generate SASS import file with all atoms, molecules, organisms and templates</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		sassimp: {
+			site:{
+				files: [<span class="hljs-string">'&lt;%= settings.atoms %&gt;/**/*.scss'</span>,<span class="hljs-string">'&lt;%= settings.molecules %&gt;/**/*.scss'</span>,<span class="hljs-string">'&lt;%= settings.organisms %&gt;/**/*.scss'</span>, <span class="hljs-string">'&lt;%= settings.templates %&gt;/**/*.scss'</span>],
+				dest: <span class="hljs-string">'&lt;%= settings.style %&gt;/_components.scss'</span>
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="autoprefix-css">Autoprefix CSS</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		autoprefixer: {
+
+			options: {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Task-specific options go here.</p></div></div><div class="code"><div class="wrapper">			},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>prefix the specified file</p></div></div><div class="code"><div class="wrapper">			single_file: {
+				options: {</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Target-specific options go here.</p></div></div><div class="code"><div class="wrapper">					browsers: [<span class="hljs-string">'&gt; 1%'</span>, <span class="hljs-string">'last 2 version'</span>, <span class="hljs-string">'ie 9'</span>],
+					map: <span class="hljs-literal">true</span>
+				},
+				src: <span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/css/main.css'</span>
+			}
+		},		</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="minify-css">Minify CSS</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		cssmin: {
+			add_banner: {
+				options: {
+					banner: <span class="hljs-string">'/* Creuna */'</span>
+				},
+				files: {
+					<span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/css/main.min.css'</span>: [<span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/css/main.css'</span>]
+				}
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="build-html-from-templates-and-data">Build HTML from templates and data</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		assemble: {
+			options: {
+				flatten: <span class="hljs-literal">true</span>,
+				production: production,
+				assets: <span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;'</span>,
+				postprocess: <span class="hljs-built_in">require</span>(<span class="hljs-string">'pretty'</span>),</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>Metadata</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				pkg: <span class="hljs-string">'&lt;%= pkg %&gt;'</span>,
+				site: <span class="hljs-string">'&lt;%= site %&gt;'</span>,
+				data: [<span class="hljs-string">'&lt;%= settings.data %&gt;'</span>],</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>Templates</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				partials: <span class="hljs-string">'&lt;%= settings.partials %&gt;/*.hbs'</span>,
+				layoutdir: <span class="hljs-string">'&lt;%= settings.layouts %&gt;'</span>,
+				layout: <span class="hljs-string">'&lt;%= settings.layout %&gt;'</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>Extensions</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				helpers: <span class="hljs-string">'&lt;%= settings.helpers %&gt;'</span>
+			},
+			site: {
+				files: {<span class="hljs-string">'&lt;%= settings.dest %&gt;/'</span>: [<span class="hljs-string">'&lt;%= settings.templates %&gt;/**/*.hbs'</span>]}
+			},
+			dev: {
+				files: [
+					{<span class="hljs-string">'&lt;%= settings.dest %&gt;/components/atoms/'</span>: [<span class="hljs-string">'&lt;%= settings.atoms %&gt;/**/*.hbs'</span>]},
+					{<span class="hljs-string">'&lt;%= settings.dest %&gt;/components/molecules/'</span>: [<span class="hljs-string">'&lt;%= settings.molecules %&gt;/**/*.hbs'</span>]},
+					{<span class="hljs-string">'&lt;%= settings.dest %&gt;/components/organisms/'</span>: [<span class="hljs-string">'&lt;%= settings.organisms %&gt;/**/*.hbs'</span>]}
+				]
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="copy-vendor-scripts">Copy vendor scripts</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		copy: {
+			site: {
+				files: [</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>includes files within path</p></div></div><div class="code"><div class="wrapper">					{expand: <span class="hljs-literal">true</span>, cwd: <span class="hljs-string">'&lt;%= settings.assets %&gt;/'</span>, src: [<span class="hljs-string">'js/vendor/**'</span>, <span class="hljs-string">'fonts/**'</span>, <span class="hljs-string">'images/**'</span>], dest: <span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/'</span>}
+				]
+			},
+			dev:{
+				files: [
+					{expand: <span class="hljs-literal">true</span>, cwd: <span class="hljs-string">'&lt;%= settings.assets %&gt;/js/'</span>, src: [<span class="hljs-string">'**'</span>], dest: <span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/src/'</span>}
+				]
+
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="watch-files">Watch files</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		watch: {
+			sass: {
+				files: [<span class="hljs-string">'&lt;%= settings.style %&gt;/**/*.scss'</span>, <span class="hljs-string">'&lt;%= settings.components %&gt;/**/*.scss'</span>],
+				tasks: [<span class="hljs-string">'copy:site'</span>, <span class="hljs-string">'styles'</span>]
+			},
+			js: {
+				files: [<span class="hljs-string">'Gruntfile.js'</span>, <span class="hljs-string">'&lt;%= settings.data %&gt;/*.json'</span>, <span class="hljs-string">'&lt;%= settings.scripts %&gt;/**/*.js'</span>, <span class="hljs-string">'&lt;%= settings.components %&gt;/**/*.js'</span>],
+				tasks: [<span class="hljs-string">'copy:site'</span>, <span class="hljs-string">'scripts'</span>]
+			},
+			hbs: {
+				files: [<span class="hljs-string">'&lt;%= settings.templates %&gt;/**/*.hbs'</span>, <span class="hljs-string">'&lt;%= settings.components %&gt;/**/*.hbs'</span>],
+				tasks: [<span class="hljs-string">'copy:site'</span>, <span class="hljs-string">'build'</span>]
+			},
+			tests: {
+				files: [<span class="hljs-string">'&lt;%= settings.tests %&gt;/**/*.js'</span>, <span class="hljs-string">'!&lt;%= settings.tests %&gt;/visual/**/*.js'</span>, <span class="hljs-string">'&lt;%= settings.atoms %&gt;/**/*.js'</span>, <span class="hljs-string">'&lt;%= settings.molecules %&gt;/**/*.js'</span>, <span class="hljs-string">'&lt;%= settings.organisms %&gt;/**/*.js'</span>],
+				tasks: [<span class="hljs-string">'test'</span>]
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="compile-scripts-with-require-js">Compile scripts with Require JS</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		requirejs: {
+			site: {
+				options: {
+					baseUrl: <span class="hljs-string">"&lt;%= settings.scripts %&gt;"</span>,
+					mainConfigFile: <span class="hljs-string">"&lt;%= settings.scripts %&gt;/config.js"</span>,
+					name: <span class="hljs-string">"main"</span>,
+					out: <span class="hljs-string">"&lt;%= settings.dest %&gt;/&lt;%= settings.scripts %&gt;/all.min.js"</span>
+				}
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="generate-documentation">Generate documentation</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		groc: {
+			options: {
+				<span class="hljs-string">"out"</span>: <span class="hljs-string">"&lt;%= settings.docs %&gt;/"</span>
+			},
+			site: [
+				<span class="hljs-string">"README.md"</span>,
+				<span class="hljs-string">"TODO.md"</span>,
+				<span class="hljs-string">"Gruntfile.js"</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>Scripts</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				<span class="hljs-string">"&lt;%= settings.scripts %&gt;/**/*.js"</span>, 
+				<span class="hljs-string">"!&lt;%= settings.scripts %&gt;/vendor/**/*.js"</span>, 
+				<span class="hljs-string">"&lt;%= settings.tests %&gt;/**/*.js"</span>, 
+				<span class="hljs-string">"&lt;%= settings.atoms %&gt;/**/*.js"</span>, 
+				<span class="hljs-string">"&lt;%= settings.molecules %&gt;/**/*.js"</span>, 
+				<span class="hljs-string">"&lt;%= settings.organisms %&gt;/**/*.js"</span>, 
+				<span class="hljs-string">"&lt;%= settings.templates %&gt;/**/*.js"</span>, </div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>SASS</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				<span class="hljs-string">"&lt;%= settings.style %&gt;/**/*.scss"</span>, 
+				<span class="hljs-string">"&lt;%= settings.atoms %&gt;/**/*.scss"</span>, 
+				<span class="hljs-string">"&lt;%= settings.molecules %&gt;/**/*.scss"</span>, 
+				<span class="hljs-string">"&lt;%= settings.organisms %&gt;/**/*.scss"</span>, 
+				<span class="hljs-string">"&lt;%= settings.templates %&gt;/**/*.scss"</span>,</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><blockquote>
+<p>Templates</p>
+</blockquote></div></div><div class="code"><div class="wrapper">				<span class="hljs-string">"&lt;%= settings.atoms %&gt;/**/*.hbs"</span>, 
+				<span class="hljs-string">"&lt;%= settings.molecules %&gt;/**/*.hbs"</span>, 
+				<span class="hljs-string">"&lt;%= settings.organisms %&gt;/**/*.hbs"</span>, 
+				<span class="hljs-string">"&lt;%= settings.templates %&gt;/**/*.hbs"</span>,
+				<span class="hljs-string">"&lt;%= settings.layouts %&gt;/**/*.hbs"</span>,
+				<span class="hljs-string">"&lt;%= settings.partials %&gt;/**/*.hbs"</span>
+			]
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="live-reload-with-browsersync">Live reload with BrowserSync</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		browserSync: {
+			bsFiles: {
+				src : [
+					<span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/css/*.css'</span>,
+					<span class="hljs-string">'&lt;%= settings.dest %&gt;/&lt;%= settings.assets %&gt;/js/*.js'</span>,
+					<span class="hljs-string">'&lt;%= settings.dest %&gt;/*.html'</span>
+				]
+			},
+			options: {
+				server: {
+					baseDir: [<span class="hljs-string">'&lt;%= settings.dest %&gt;/'</span>],
+				},
+				watchTask: <span class="hljs-literal">true</span>
+			}
+		},
+
+		</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="unit-testing-with-karma-mocha-chai-and-sinon">Unit testing with Karma, Mocha, Chai and Sinon</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		karma: {
+			unit: {
+				configFile: <span class="hljs-string">'karma.conf.js'</span>,
+				singleRun: <span class="hljs-literal">true</span>,
+				reporters: <span class="hljs-string">'progress'</span>,
+				runnerPort: <span class="hljs-number">9876</span>
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="functional-testing-with-casperjs-and-mocha">Functional testing with CasperJS and Mocha</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		mocha_casperjs: {
+			options: {
+				reporter: <span class="hljs-string">'spec'</span>
+			},
+			site: {
+				src: [<span class="hljs-string">'&lt;%= settings.tests %&gt;/functional/**/*.js'</span>]
+			}
+		},</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h5 id="css-regression-testing-with-phantomcss">CSS Regression testing with PhantomCSS</h5></div></div></div><div class="segment"><div class="code"><div class="wrapper">		phantomcss: {
+			options: {
+			},
+			desktop: {
+				options: {
+					screenshots: <span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/screenshots/baseline/desktop/'</span>,
+					results: <span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/screenshots/results/desktop/'</span>,
+					viewportSize: [<span class="hljs-number">1280</span>, <span class="hljs-number">768</span>]
+				},
+				src: [
+					<span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/**/*.js'</span>
+				]
+			},
+			mobile: {
+				options: {
+					screenshots: <span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/screenshots/baseline/mobile/'</span>,
+					results: <span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/screenshots/results/mobile/'</span>,
+					viewportSize: [<span class="hljs-number">320</span>, <span class="hljs-number">480</span>]
+				},
+				src: [
+					<span class="hljs-string">'&lt;%= settings.tests %&gt;/visual/**/*.js'</span>
+				]
+			}
+		}
+	});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="load-npm-plugins-to-provide-necessary-tasks">Load npm plugins to provide necessary tasks.</h3></div></div></div><div class="segment"><div class="code"><div class="wrapper">	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-clean'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-copy'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-jshint'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-watch'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-cssmin'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-sass'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-requirejs'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-mocha-casperjs'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-browser-sync'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-phantomcss'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-autoprefixer'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'grunt-karma'</span>);
+	grunt.loadNpmTasks(<span class="hljs-string">'assemble'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Modified <a href="https://github.com/seltar/grunt-groc">grunt-groc</a> task with personal fork of <a href="https://github.com/seltar/groc">groc</a></p></div></div><div class="code"><div class="wrapper">	grunt.loadNpmTasks(<span class="hljs-string">'grunt-groc'</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="custom-task-to-generate-import-statements-of-all-components">Custom task to generate import statements of all components</h3></div></div></div><div class="segment"><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'sassimp'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(target)</span>{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Get the options</p></div></div><div class="code"><div class="wrapper">		<span class="hljs-keyword">var</span> options = grunt.config.get(<span class="hljs-keyword">this</span>.name)[target];
+		<span class="hljs-keyword">var</span> files = [<span class="hljs-string">'// Autogenerated - Don\'t modify! '</span>];</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Get all files matching the glob from options</p></div></div><div class="code"><div class="wrapper">		grunt.file.expand(options.files).map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(filepath)</span> {</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Get basename</p></div></div><div class="code"><div class="wrapper">			<span class="hljs-keyword">var</span> ofile = path.basename(filepath),
+				file = ofile.replace(<span class="hljs-string">".scss"</span>,<span class="hljs-string">""</span>).substr(<span class="hljs-number">1</span>);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Push SASS import statement into array</p></div></div><div class="code"><div class="wrapper">			files.push(<span class="hljs-string">'@import "'</span> + <span class="hljs-string">"../../"</span> + filepath.replace(ofile,file) + <span class="hljs-string">'";'</span>);
+		});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Write results to destination file</p></div></div><div class="code"><div class="wrapper">		grunt.file.write(options.dest, files.join(<span class="hljs-string">"\n"</span>));
+	});</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="tasks">Tasks</h3></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt server</code> <blockquote>
+<p>Start server with live reload</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'server'</span>, [<span class="hljs-string">'browserSync'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt build</code> <blockquote>
+<p>Build HTML</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'build'</span>, [<span class="hljs-string">'assemble:site'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt scripts</code> <blockquote>
+<p>Check for errors in javascript</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'scripts'</span>, [<span class="hljs-string">'jshint'</span>, <span class="hljs-string">'requirejs'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt styles</code> <blockquote>
+<p>Generate components import and compile SASS</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'styles'</span>, [<span class="hljs-string">'sassimp:site'</span>, <span class="hljs-string">'sass:site'</span>, <span class="hljs-string">'autoprefixer'</span>, <span class="hljs-string">'cssmin'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt docs</code> <blockquote>
+<p>Generate documentation</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'docs'</span>, [<span class="hljs-string">'clean:docs'</span>, <span class="hljs-string">'groc:site'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt test</code> <blockquote>
+<p>Run unit and functional tests</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'test'</span>, [<span class="hljs-string">'karma'</span>, <span class="hljs-string">'mocha_casperjs'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt watch</code> <blockquote>
+<p>Watch for changes and automatically run tasks</p>
+</blockquote>
+</li>
+</ul></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt baseline</code><blockquote>
+<p>Register CSS Regression baseline</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'baseline'</span>, [<span class="hljs-string">'clean:screenshots'</span>, <span class="hljs-string">'phantomcss'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt compare</code> <blockquote>
+<p>Run CSS Regression tests</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'compare'</span>, [<span class="hljs-string">'phantomcss'</span>]);</div></div></div><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt make</code> <blockquote>
+<p>Builds the entire site</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'make'</span>, [<span class="hljs-string">'clean:site'</span>, <span class="hljs-string">'copy:site'</span>, <span class="hljs-string">'build'</span>, <span class="hljs-string">'scripts'</span>, <span class="hljs-string">'styles'</span>]);</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt run</code> <blockquote>
+<p>Starts the server and watches files</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'run'</span>, [<span class="hljs-string">'server'</span>, <span class="hljs-string">'watch'</span>]);</div></div></div><div class="segment"></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<li><code>grunt</code> <blockquote>
+<p>Default task</p>
+</blockquote>
+</li>
+</ul></div></div><div class="code"><div class="wrapper">	grunt.registerTask(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'make'</span>, <span class="hljs-string">'test'</span>, <span class="hljs-string">'docs'</span>, <span class="hljs-string">'run'</span>]);
+
+};</div></div></div></div></body></html>

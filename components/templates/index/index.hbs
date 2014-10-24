@@ -2,9 +2,108 @@
 title: Home
 ---
 
-<h1 id="{{slugify title}}">Welcome!</h1>
-<p class="lead">{{site.description}}</p>
-
-
-<h3>Header Organism</h3>
 {{> organism-header index.header }}
+
+<article>
+	<div class="row">
+		<div class="columns large-4">
+			<a href="#" class="block product-item">
+				<div class="image">
+					<img src="{{assets}}/images/cat.png" alt="cat" />
+					{{> atom-badge index.badge.play }}
+				</div>
+				<div class="text">
+					<span>The winter essential</span>
+					<h3>Cuddlebuddy</h3>
+					<span>+ colours</span>
+				</div>
+			</a>
+
+			<a href="#" class="block product-item">
+				<div class="image">
+					<img src="{{assets}}/images/cat4.png" alt="cat" />
+					{{> atom-badge index.badge.play }}
+				</div>
+				<div class="text">
+					<span>check out</span>
+					<h3>The kitty loafer</h3>
+					<span>+ colours</span>
+				</div>
+			</a>
+
+		</div>
+		<div class="columns large-7">
+			<div class="block block-large">
+				<div class="image">
+					<img src="{{assets}}/images/cat2.jpeg" alt="cat" />
+					{{> atom-badge index.badge.style }}
+				</div>
+				<div class="text">
+					<h3>Cuddle in style</h3>
+					<p>1 cat - 4 cuddles amety vellumsen sita pellumsen. Lorem ipsum dolor sit amet kitty cuddle. Cat lorem sita vellumsen cuddlelife.</p>
+					<a href="#" class="button">Cuddle the story</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="columns large-12">
+			<ul class="list-grid-3">
+				<li>
+					<a href="#" class="block block-hidden">
+						<div class="block badge">
+						<p>
+							Cats are cute <br />
+							Cats are fluffy <br />
+						</p>
+						</div>
+						<div class="text">
+							<span>tax and cuddle terms</span>
+							<h3>see all terms</h3>
+						</div>
+					</a>
+				</li>
+				{{#index.products}}
+				<li>
+				{{> molecule-product-item this }}
+				</li>
+				{{/index.products}}
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="columns large-4">
+			<a href="#" class="block product-item block-hidden">
+				<div class="image">
+					<img src="{{assets}}/images/cat.png" alt="cat" />
+					{{> atom-badge index.badge.future }}
+				</div>
+				<div class="text">
+					<span>Fall/winter 14</span>
+					<h3>Cat's outerwear</h3>
+				</div>
+			</a>
+
+		</div>
+		<div class="columns large-7">
+			<div class="block block-large block-hidden">
+				<div class="image">
+					<img src="{{assets}}/images/cat3.jpeg" alt="cat" />
+					{{> atom-badge index.badge.style }}
+
+				</div>
+				<div class="text">
+					<h3>Kitty stretching in the milan shade</h3>
+					<p>Lorem amety vellumsen sita pellumsen. Lorem ipsum dolor sit amet kitty stretch. Kitty lorem sita vellumsen citylife.</p>
+					<a href="#" class="button">Like the story</a>
+				</div>
+			</div>
+
+
+		</div>
+	</div>	
+</article>
+
+{{> organism-footer index.footer }}

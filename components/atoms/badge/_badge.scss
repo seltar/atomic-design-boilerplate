@@ -1,0 +1,31 @@
+/* badge */
+.badge{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	margin-top: -33px;
+	margin-left: -33px;
+	width: 66px; 
+	height: 66px;
+	
+	background: transparent none no-repeat 50% 50%;
+	
+	&.badge-play{
+		background-image: url(../images/s_labels-01.svg);
+		background-size: 100% 200%;
+		background-position: 50% 0;
+		&:hover{
+			background-position: 50% 100%;
+		}
+	}
+	&.badge-style{
+		background-image: url(../images/s_labels-02.svg);
+	}
+	&.badge-new{
+		background-image: url(../images/s_labels-03.svg);
+	}
+	&.badge-fw{
+		background-image: url(../images/s_labels-04.svg);
+		top: 33px;
+	}
+}

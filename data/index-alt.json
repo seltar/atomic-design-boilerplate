@@ -1,0 +1,46 @@
+{
+	"header": {
+		"background": true,
+		"menu": {
+			"items":[{
+				"title": "CATS",
+				"items":[{
+					"title": "Meow"
+				},{
+					"title": "Mjau"
+				},{
+					"title": "Miao"
+				}]
+			},{
+				"title": "DOGS"
+			},{
+				"title": "RABBITS"
+			},{
+				"title": "POSSUMS"
+			},{
+				"title": "WHALES"
+			},{
+				"title": "CARROTS"
+			}],
+			"search":{
+				"name": "search"
+			}
+
+		},
+		"submenu":{
+			"items":[{
+				"title": "About"
+			},{
+				"title": "Profile",
+				"icon": {
+					"name": "user"
+				}
+			}]
+		},
+		"badge":{
+			"style": {
+				"type": "style"
+			}
+		}
+	}
+}

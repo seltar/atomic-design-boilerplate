@@ -8,7 +8,7 @@ root:             dist
 dest:             <%= settings.root %>
 
 # Documentation
-doc:              doc
+docs:             docs
 
 # Data
 data:             data/*.{json,yml}

@@ -16,7 +16,11 @@
 @import "core/_imgs";
 
 // Non-changeable
+@import "core/_grid";
 @import "core/_layout";
+
+// Variables
+@import "vars";
 
 // Atoms, molecules, organisms and templates
 @import "components";

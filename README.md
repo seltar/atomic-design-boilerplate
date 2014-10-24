@@ -4,13 +4,13 @@ Atomic Design Boilerplate
 > https://github.com/seltar/atomic-design-boilerplate
 
 ###### Version
-> 0.1.0
+> 0.1.2
 
 ### What is this
 This project aims to give structure and improve automation when working with atomic design principles.
 
 ### Commenting
-Use markdown syntax in comments for nice formatted documentation
+Use markdown syntax in comments for nice formatted documentation  
 [Markdown syntax](http://daringfireball.net/projects/markdown/syntax)
 
 ### Starting up
@@ -27,6 +27,10 @@ Use markdown syntax in comments for nice formatted documentation
 ### Building
 Here are the tasks you can use with grunt
 
+- Start server with live reload
+	
+		grunt server
+
 - Clean folders and build html
 
 		grunt build
@@ -39,17 +43,13 @@ Here are the tasks you can use with grunt
 
 		grunt styles 
 
-- Start watching for changes
-
-		grunt automate 
-
-- Start server with live reload
-	
-		grunt server
-
 - Run unit and functional tests
 
 		grunt test
+
+- Start watching for changes
+
+		grunt watch
 
 - Register CSS Regression baseline
 
@@ -62,10 +62,6 @@ Here are the tasks you can use with grunt
 - Build documentation
 
 		grunt docs
-
-- Start watching for changes and generate documentation
-
-		grunt autodocs
 
 - Builds the entire site
 		
@@ -97,19 +93,17 @@ Here are the tasks you can use with grunt
 	│
 	├───assets
 	│   │
-	│   ├───css
-	│   │   │   
-	│   │   │   # compiled css
-	│   │   └───main.css
-	│   │
-	│   ├───ico
+	│   ├───fonts
 	│   │   │
-	│   │   │   # favicons, apple icons etc
+	│   │   │   # images, icons, etc
+	│   │
+	│   ├───images
+	│   │   │
+	│   │   │   # images, icons, etc
 	│   │
 	│   ├───js
 	│   │   │   
 	│   │   │   # main scripts
-	│   │   ├───all.min.js
 	│   │   ├───config.js 
 	│   │   ├───main.js 
 	│   │   │      
@@ -159,12 +153,20 @@ Here are the tasks you can use with grunt
 	│   │   │
 	│   │   │   # all .hbs files in this folder are included as handlebars partials.
 	│   │   ├───head.hbs
-	│   │   ├───footer.hbs
 	│   │   └───javascripts.hbs
 	│   │       
 	│   ├───atoms
 	│   │   │
 	│   │   │   # Atoms
+	│   │   └───example
+	│   │       │   # styles
+	│   │       ├───_example.scss
+	│   │       │   # template
+	│   │       ├───example.hbs
+	│   │       │   # script
+	│   │       ├───example.js
+	│   │       │   # unit test
+	│   │       └───example.test.js
 	│   │       
 	│   ├───molecules
 	│   │   │
@@ -181,19 +183,18 @@ Here are the tasks you can use with grunt
 	├───data
 	│   │
 	│   │   # all .json files in this folder are included as data in handlebars templates.
-	│   └───index.js
 	│    
-	├───doc
+	├───dist
+	│   │
+	│   │	# all compiled templates, styles and scripts
+	│           
+	├───docs
 	│   │
 	│   │   # generated project documentation
 	│    
 	├───node_modules
 	│   │
 	│   │   # all modules required to build
-	│           
-	├───output
-	│   │
-	│   │	# all built templates end up here, unless you changed the defaults in settings.yml
 	│           
 	└─tests
 		│

@@ -1,0 +1,24 @@
+
+
+/* button */
+.button
+{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-transform: uppercase;
+	border: none;
+	background: $primary;
+	color: #FFF;
+	font-size: 14px;
+	padding: 5px 15px;
+	letter-spacing: 2px;
+	&:hover{
+		background: $secondary;
+	}
+}
+input.button{
+	display: inline-block;
+	background: $secondary;
+	width: auto;
+	margin: 0;
+}

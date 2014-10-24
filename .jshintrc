@@ -13,12 +13,18 @@
   "devel": true,
   "browser": true,
   "globals": {
+    
     "$": false,
+
     "require": false,
     "requirejs": false,
     "define": false,
+
     "it": false,
-    "describe": false
+    "describe": false,
+
+    "casper": false,
+    "phantomcss": false
 
   } 
 }

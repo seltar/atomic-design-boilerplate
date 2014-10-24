@@ -1,0 +1,54 @@
+
+/**
+ * FOOTER
+ */
+
+footer{
+	background: #0e2a36;
+	margin-top: 100px;
+	padding: 20px 0 60px;
+	text-align: center;
+	color: #90a1a5;
+	a{
+		color: #FFF;
+		&:hover{
+			color: $secondary;
+		}
+	}
+
+	h2{
+		color: #FFF;
+		font-size: 40px;
+		font-weight: 300;
+		margin-top: 20px;
+	}
+	h4{
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-weight: 600;
+	}
+	span{
+		display: block;
+		font-size: 14px;
+		padding: 0 15px;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	.icon{
+		width: 90%;
+		height: 0;
+		margin-bottom: 10px;
+		font-size: 30px;
+	}
+
+	hr{
+		position: absolute;
+		top: 15px;
+		right: -1px;
+		border: none;
+		width: 1px;
+		height: 220px;
+		border-right: solid 1px #90a1a5;
+	}
+
+}

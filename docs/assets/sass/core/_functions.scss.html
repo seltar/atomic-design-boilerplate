@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/sass/core/_functions.scss</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="assets/sass/core/_functions.scss"><meta name="groc-project-path" content="assets/sass/core/_functions.scss"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/sass/core/_functions.scss</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>Foundation by ZURB
+foundation.zurb.com
+Licensed under MIT Open Source</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>This is the default html and body font-size for the base rem value.</p></div></div><div class="code"><div class="wrapper">$rem-<span class="hljs-tag">base</span><span class="hljs-value">: <span class="hljs-number">16</span>px !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>IMPORT ONCE
+We use this to prevent styles from being loaded multiple times for compenents that rely on other components. </p></div></div><div class="code"><div class="wrapper">$modules<span class="hljs-value">: () !default;</span>
+<span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> exports</span>($name) {</span>
+  $module_index<span class="hljs-value">: index($modules, $name);</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span><span class="hljs-preprocessor"> not</span> $module_index{</span>
+    $modules<span class="hljs-value">: append($modules, $name) !global;</span>
+    <span class="hljs-at_rule">@<span class="hljs-keyword">content</span>;</span>
+  }
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> functions</span></p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>RANGES
+We use these functions to define ranges for various things, like media queries. </p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> lower-bound</span>($range){</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span><span class="hljs-preprocessor"> length</span>($range) &lt;=<span class="hljs-preprocessor"> 0</span> {</span>
+    <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> 0</span>;</span>
+  }
+  <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> nth</span>($range,<span class="hljs-number">1</span>);</span>
+}
+
+<span class="hljs-at_rule">@function<span class="hljs-preprocessor"> upper-bound</span>($range) {</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span><span class="hljs-preprocessor"> length</span>($range) &lt;<span class="hljs-preprocessor"> 2</span> {</span>
+    <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> 999999999999</span>;</span>
+  }
+  <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> nth</span>($range,<span class="hljs-preprocessor"> 2</span>);</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>STRIP UNIT
+It strips the unit of measure and returns it</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> strip-unit</span>($num) {</span>
+  <span class="hljs-at_rule">@return $num / ($num *<span class="hljs-preprocessor"> 0</span> +<span class="hljs-preprocessor"> 1</span>);</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>CONVERT TO REM</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> convert-to-rem</span>($value, $base-value: $rem-base)  {</span>
+  $value<span class="hljs-value">: strip-unit($value) / strip-unit($base-value) * <span class="hljs-number">1</span>rem;</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> ($value ==<span class="hljs-preprocessor"> 0rem</span>) {</span> $value<span class="hljs-value">: <span class="hljs-number">0</span>;</span> } <span class="hljs-comment">// Turn 0rem into 0</span>
+  <span class="hljs-at_rule">@return $value;</span>
+}
+
+<span class="hljs-at_rule">@function<span class="hljs-preprocessor"> data</span>($attr) {</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $<span class="hljs-keyword">namespace</span> {</span>
+    <span class="hljs-at_rule">@return <span class="hljs-string">'[data-'</span> + $<span class="hljs-keyword">namespace</span> + <span class="hljs-string">'-'</span> + $attr + <span class="hljs-string">']'</span>;</span>
+  }
+
+  <span class="hljs-at_rule">@return <span class="hljs-string">'[data-'</span> + $attr + <span class="hljs-string">']'</span>;</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>REM CALC </p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem&#39;s.
+Call with 1, 2, 3 or 4 parameters, &#39;px&#39; is not required but supported:
+  rem-calc(10 20 30px 40);
+Space delimited, if you want to delimit using comma&#39;s, wrap it in another pair of brackets
+  rem-calc((10, 20, 30, 40px));
+Optionally call with a different base (eg: 8px) to calculate rem.
+  rem-calc(16px 32px 48px, 8px);
+If you require to comma separate your list
+  rem-calc((16px, 32px, 48), 8px);</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> rem-calc</span>($values, $base-value: $rem-base) {</span>
+  $max<span class="hljs-value">: length($values);</span>
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $max ==<span class="hljs-preprocessor"> 1</span> {</span> <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> convert-to-rem</span>(<span class="hljs-function">nth($values, <span class="hljs-number">1</span>)</span>, $base-value);</span> }
+
+  $remValues<span class="hljs-value">: ();</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">for</span> $i<span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 1</span><span class="hljs-preprocessor"> through</span> $max {</span>
+    $remValues<span class="hljs-value">: append($remValues, convert-to-rem(nth($values, $i), $base-value));</span>
+  }
+  <span class="hljs-at_rule">@return $remValues;</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>OLD EM CALC
+Deprecated: We&#39;ll drop support for this in 5.1.0, use rem-calc()</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> emCalc</span>($values){</span>
+  <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> rem-calc</span>($values);</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>OLD EM CALC
+Deprecated: We&#39;ll drop support for this in 5.1.0, use rem-calc()</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> em-calc</span>($values){</span>
+  <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> rem-calc</span>($values);</span>
+}
+
+
+
+
+<span class="hljs-comment">/// CREUNA FUNCTIONS</span>
+
+<span class="hljs-at_rule">@function<span class="hljs-preprocessor"> em</span>($target, $context:<span class="hljs-preprocessor"> 16</span>) {</span>
+	<span class="hljs-at_rule">@return ($target / $context) +<span class="hljs-preprocessor"> em</span>;</span>
+}
+
+<span class="hljs-at_rule">@function<span class="hljs-preprocessor"> rem</span>($target) {</span>
+	<span class="hljs-at_rule">@return ($target /<span class="hljs-preprocessor"> 16</span>) +<span class="hljs-preprocessor"> rem</span>;</span>
+}
+
+<span class="hljs-at_rule">@function<span class="hljs-preprocessor"> p</span>($target, $context) {</span>
+	<span class="hljs-at_rule">@return ($target / $context) *<span class="hljs-preprocessor"> 100</span>%;</span>
+}</div></div></div></div></body></html>

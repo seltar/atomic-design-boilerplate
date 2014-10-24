@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/sass/_site.scss</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="assets/sass/_site.scss"><meta name="groc-project-path" content="assets/sass/_site.scss"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/sass/_site.scss</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>Add your styles here</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Core</p></div></div><div class="code"><div class="wrapper"><span class="hljs-tag">body</span>
+{
+	<span class="hljs-attribute">font-family</span><span class="hljs-value">: <span class="hljs-string">"Open Sans"</span>;</span>
+	<span class="hljs-attribute">font-weight</span><span class="hljs-value">: <span class="hljs-number">400</span>;</span>
+	<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#000</span>;</span>
+}
+
+<span class="hljs-tag">a</span>{
+	<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#000</span>;</span>
+	<span class="hljs-attribute">text-decoration</span><span class="hljs-value">: none;</span>
+}
+
+<span class="hljs-tag">h3</span>{
+	<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">28</span>px;</span>
+	<span class="hljs-attribute">font-weight</span><span class="hljs-value">: <span class="hljs-number">300</span>;</span>
+	<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">7</span>px <span class="hljs-number">0</span> <span class="hljs-number">0</span>;</span>
+	<span class="hljs-attribute">letter-spacing</span><span class="hljs-value">: <span class="hljs-number">2</span>px;</span>
+}
+<span class="hljs-tag">span</span>
+{
+	<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">12</span>px;</span>
+	<span class="hljs-attribute">letter-spacing</span><span class="hljs-value">: <span class="hljs-number">2</span>px;</span>
+}
+<span class="hljs-tag">p</span>{
+	<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">14</span>px;</span>
+}
+<span class="hljs-tag">img</span>
+{
+	<span class="hljs-attribute">max-width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Blocks</p></div></div><div class="code"><div class="wrapper"><span class="hljs-class">.block</span>{
+	<span class="hljs-attribute">position</span><span class="hljs-value">: relative;</span>
+	<span class="hljs-attribute">text-align</span><span class="hljs-value">: center;</span>
+	<span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">50</span>px;</span>
+	<span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+	<span class="hljs-attribute">opacity</span><span class="hljs-value">: <span class="hljs-number">1</span>;</span>
+	&amp;<span class="hljs-class">.block-hidden</span>
+	{
+		<span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">50</span>px;</span>
+		<span class="hljs-attribute">opacity</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+	}
+	<span class="hljs-attribute">transition</span><span class="hljs-value">: opacity <span class="hljs-number">0.6</span>s, margin-top <span class="hljs-number">0.6</span>s;</span>
+
+	&amp;<span class="hljs-class">.badge</span>{
+		<span class="hljs-attribute">position</span><span class="hljs-value">: static;</span>
+		<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span> auto <span class="hljs-number">20</span>px;</span>
+		<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">180</span>px;</span>
+		<span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">180</span>px;</span>
+		<span class="hljs-attribute">border-radius</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+		<span class="hljs-attribute">background</span><span class="hljs-value">: $primary;</span>
+		<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#FFF</span>;</span>
+		<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">40</span>px <span class="hljs-number">20</span>px;</span>
+		<span class="hljs-tag">p</span>{
+			<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+			<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">14</span>px;</span>
+			<span class="hljs-attribute">line-height</span><span class="hljs-value">: <span class="hljs-number">16</span>px;</span>
+		}
+	}
+
+	<span class="hljs-tag">h3</span>,
+	<span class="hljs-tag">span</span>{
+		<span class="hljs-attribute">text-transform</span><span class="hljs-value">: uppercase;</span>
+		<span class="hljs-attribute">line-height</span><span class="hljs-value">: <span class="hljs-number">1.1</span>;</span>
+	}
+	<span class="hljs-tag">span</span><span class="hljs-pseudo">:first-child</span>{
+		<span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
+	}
+	<span class="hljs-class">.image</span>{
+		<span class="hljs-attribute">position</span><span class="hljs-value">: relative;</span>
+	}
+	&amp;<span class="hljs-class">.product-item</span> <span class="hljs-class">.image</span>{
+		<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">0</span> <span class="hljs-number">3</span>px <span class="hljs-number">0</span>;</span>
+	}
+
+}
+
+
+<span class="hljs-class">.block-large</span>{
+	<span class="hljs-class">.badge</span>{
+		<span class="hljs-attribute">left</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+		<span class="hljs-attribute">top</span><span class="hljs-value">: <span class="hljs-number">50</span>%;</span>
+	}
+	<span class="hljs-tag">h3</span>
+	{
+		<span class="hljs-attribute">font-weight</span><span class="hljs-value">: <span class="hljs-number">800</span>;</span>
+		<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">30</span>px <span class="hljs-number">0</span> <span class="hljs-number">0</span>;</span>
+	}
+	<span class="hljs-tag">p</span>{
+		<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">10</span>px <span class="hljs-number">0</span> <span class="hljs-number">30</span>px;</span>
+		<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">16</span>px;</span>
+	}
+	<span class="hljs-class">.text</span>{
+		<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">0</span> <span class="hljs-number">30</span>px;</span>
+	}
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Form</p></div></div><div class="code"><div class="wrapper"><span class="hljs-class">.form</span>{
+	<span class="hljs-attribute">text-align</span><span class="hljs-value">: center;</span>
+	<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">0</span> <span class="hljs-number">20</span>px;</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>input (footer) </p></div></div><div class="code"><div class="wrapper"><span class="hljs-tag">input</span>{
+	-webkit-appearance<span class="hljs-value">: none;</span>
+	-moz-appearance<span class="hljs-value">: none;</span>
+	<span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
+	<span class="hljs-attribute">background</span><span class="hljs-value">: transparent;</span>
+	<span class="hljs-attribute">border</span><span class="hljs-value">: none;</span>
+	<span class="hljs-attribute">border-bottom</span><span class="hljs-value">: solid <span class="hljs-number">1</span>px <span class="hljs-hexcolor">#90a1a5</span>;</span>
+	<span class="hljs-attribute">text-align</span><span class="hljs-value">: center;</span>
+	<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">40</span>px <span class="hljs-number">0</span> <span class="hljs-number">30</span>px;</span>
+	<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">5</span>px <span class="hljs-number">0</span>;</span>
+	<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Lists</p></div></div><div class="code"><div class="wrapper"><span class="hljs-class">.list-centered</span>,
+<span class="hljs-attr_selector">[class^="list-grid"]</span>, <span class="hljs-attr_selector">[class*=" list-grid"]</span>
+{
+	<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+	<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+	<span class="hljs-attribute">list-style</span><span class="hljs-value">: none;</span>
+}
+<span class="hljs-attr_selector">[class^="list-grid"]</span>, <span class="hljs-attr_selector">[class*=" list-grid"]</span>
+{
+	<span class="hljs-tag">li</span>{
+		<span class="hljs-attribute">display</span><span class="hljs-value">: inline-block;</span>
+	}
+}
+<span class="hljs-class">.list-grid</span>{
+	<span class="hljs-tag">li</span>{
+		<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">40</span>%;</span>
+		<span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">50</span>px;</span>
+	}
+}
+<span class="hljs-class">.list-grid-3</span>{
+	<span class="hljs-tag">li</span>{
+		<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">33</span>%;</span>
+	}
+}</div></div></div></div></body></html>

@@ -1,14 +1,149 @@
 {
 	"header": {
-		"search": {
-			"field": {
-				"query": "search-term",
-				"placeholder": "Search here"
-			},
-			"button": {
-				"id": "btn-search",
-				"title": "Search"
+		"menu": {
+			"items":[{
+				"title": "CATS",
+				"items":[{
+					"title": "Meow"
+				},{
+					"title": "Mjau"
+				},{
+					"title": "Miao"
+				}]
+			},{
+				"title": "DOGS"
+			},{
+				"title": "RABBITS"
+			},{
+				"title": "POSSUMS"
+			},{
+				"title": "WHALES"
+			},{
+				"title": "CARROTS"
+			}],
+			"search":{
+				"name": "search"
 			}
+
+		},
+		"submenu":{
+			"items":[{
+				"title": "About"
+			},{
+				"title": "Profile",
+				"icon": {
+					"name": "user"
+				}
+			}]
+		}
+	},
+	"products": [
+		{
+			"hidden": true,
+			"image":{
+				"src": "assets/images/cat.png",
+				"alt": "cat",
+				"badge": {
+					"type": "fw"
+				}
+			},
+			"text": {
+				"first": "Comfy",
+				"second": "Charles Fluff the II",
+				"third": "+ colours"
+			}
+		},
+		{
+			"hidden": true,
+			"image":{
+				"src": "assets/images/cat4.png",
+				"alt": "cat"
+			},
+			"text": {
+				"first": "Spring/summer 2014",
+				"second": "Catnip",
+				"third": "+ colours"
+			}
+		},
+		{
+			"hidden": true,
+			"image":{
+				"src": "assets/images/cat.png",
+				"alt": "cat"
+			},
+			"text": {
+				"first": "Check out",
+				"second": "Fluffycat",
+				"third": "+ colours"
+			}
+		},
+		{
+			"image":{
+			"hidden": true,
+				"src": "assets/images/cat.png",
+				"alt": "cat",
+				"badge": {
+					"type": "new"
+				}
+			},
+			"text": {
+				"first": "just in for fall 2014",
+				"second": "Kitty",
+				"third": "+ colours"
+			}
+		},
+		{
+			"image":{
+			"hidden": true,
+				"src": "assets/images/cat4.png",
+				"alt": "cat",
+				"badge": {
+					"type": "play"
+				}
+			},
+			"text": {
+				"first": "keeping you cuddled",
+				"second": "Alberto cat",
+				"third": "+ colours"
+			}
+		}
+	],
+	"footer": {
+		"social": {
+			"facebook": {
+				"name": "facebook"
+			},
+			"twitter": {
+				"name": "twitter"
+			},
+			"instagram": {
+				"name": "instagram"
+			},
+			"youtube": {
+				"name": "youtube"
+			}
+		}
+	},
+	"badge": {
+		"play": {
+			"type": "play"
+		},
+		"future": {
+			"type": "fw"
+		},
+		"style": {
+			"type": "style"
+		},
+		"new": {
+			"type": "new"
+		}
+	},
+	"icons":{
+		"weather":{
+			"name": "weather"
+		},
+		"instagram":{
+			"name": "instagram-bla"
 		}
 	}
 }

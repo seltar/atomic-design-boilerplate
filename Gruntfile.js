@@ -4,6 +4,10 @@ var path = require('path');
 
 module.exports = function(grunt) {
 	'use strict';
+	
+
+	var production = true;
+
 
 	// # Project configuration.
 	grunt.initConfig({
@@ -17,21 +21,22 @@ module.exports = function(grunt) {
 		// ##### Before generating any new files, remove files from previous build.
 		clean: {
 			site:			[ '<%= settings.dest %>/*' ],
-			doc:			[ '<%= settings.doc %>/*' ],
+			docs:			[ '<%= settings.docs %>/*' ],
 			screenshots:	[ '<%= settings.tests %>/visual/screenshots/*' ]
 		},
 
+
 		// ##### Lint JavaScript
 		jshint: {
-			all: [
+			options: {
+				jshintrc: '.jshintrc'
+			},
+			site: [
 				'Gruntfile.js', 
 				'<%= settings.scripts %>/**/*.js', 
 				'<%= settings.components %>/**/*.js',
 				'!<%= settings.scripts %>/vendor/**/*.js' // exclude vendor scripts
-			],
-			options: {
-				jshintrc: '.jshintrc'
-			}
+			]
 		},
 
 		// ##### Compile SASS
@@ -46,6 +51,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+
 		// ##### Generate SASS import file with all atoms, molecules, organisms and templates
 		sassimp: {
 			site:{
@@ -54,11 +60,44 @@ module.exports = function(grunt) {
 			}
 		},
 
+
+		// ##### Autoprefix CSS
+		autoprefixer: {
+
+			options: {
+				// Task-specific options go here.
+			},
+
+			// prefix the specified file
+			single_file: {
+				options: {
+				// Target-specific options go here.
+					browsers: ['> 1%', 'last 2 version', 'ie 9'],
+					map: true
+				},
+				src: '<%= settings.dest %>/<%= settings.assets %>/css/main.css'
+			}
+		},		
+
+
+		// ##### Minify CSS
+		cssmin: {
+			add_banner: {
+				options: {
+					banner: '/* Creuna */'
+				},
+				files: {
+					'<%= settings.dest %>/<%= settings.assets %>/css/main.min.css': ['<%= settings.dest %>/<%= settings.assets %>/css/main.css']
+				}
+			}
+		},
+
+
 		// ##### Build HTML from templates and data
 		assemble: {
 			options: {
 				flatten: true,
-				production: true,
+				production: production,
 				assets: '<%= settings.dest %>/<%= settings.assets %>',
 				postprocess: require('pretty'),
 
@@ -78,90 +117,57 @@ module.exports = function(grunt) {
 			site: {
 				files: {'<%= settings.dest %>/': ['<%= settings.templates %>/**/*.hbs']}
 			},
-			atoms: {
-				files: {'<%= settings.dest %>/atoms/': ['<%= settings.atoms %>/**/*.hbs']}
-			},
-			molecules: {
-				files: {'<%= settings.dest %>/molecules/': ['<%= settings.molecules %>/**/*.hbs']}
-			},
-			organisms: {
-				files: {'<%= settings.dest %>/organisms/': ['<%= settings.organisms %>/**/*.hbs']}
-			}
-		},
-
-		// ##### Copy vendor scripts
-		copy: {
-			main: {
+			dev: {
 				files: [
-					// includes files within path
-					{expand: true, cwd: '<%= settings.assets %>/', src: ['js/vendor/**/*.js'], dest: '<%= settings.dest %>/<%= settings.assets %>/', filter: 'isFile'},
+					{'<%= settings.dest %>/components/atoms/': ['<%= settings.atoms %>/**/*.hbs']},
+					{'<%= settings.dest %>/components/molecules/': ['<%= settings.molecules %>/**/*.hbs']},
+					{'<%= settings.dest %>/components/organisms/': ['<%= settings.organisms %>/**/*.hbs']}
 				]
 			}
 		},
+
+
+		// ##### Copy vendor scripts
+		copy: {
+			site: {
+				files: [
+					// includes files within path
+					{expand: true, cwd: '<%= settings.assets %>/', src: ['js/vendor/**', 'fonts/**', 'images/**'], dest: '<%= settings.dest %>/<%= settings.assets %>/'}
+				]
+			},
+			dev:{
+				files: [
+					{expand: true, cwd: '<%= settings.assets %>/js/', src: ['**'], dest: '<%= settings.dest %>/<%= settings.assets %>/src/'}
+				]
+
+			}
+		},
+
 
 		// ##### Watch files
 		watch: {
 			sass: {
 				files: ['<%= settings.style %>/**/*.scss', '<%= settings.components %>/**/*.scss'],
-				tasks: ['styles']
+				tasks: ['copy:site', 'styles']
 			},
 			js: {
-				files: ['Gruntfile.js', '<%= settings.scripts %>/**/*.js', '<%= settings.components %>/**/*.js'],
-				tasks: ['scripts']
+				files: ['Gruntfile.js', '<%= settings.data %>/*.json', '<%= settings.scripts %>/**/*.js', '<%= settings.components %>/**/*.js'],
+				tasks: ['copy:site', 'scripts']
 			},
 			hbs: {
 				files: ['<%= settings.templates %>/**/*.hbs', '<%= settings.components %>/**/*.hbs'],
-				tasks: ['build']
+				tasks: ['copy:site', 'build']
 			},
-			docs: {
-				files: [
-					"README.md",
-					"TODO.md",
-					"Gruntfile.js",
-
-					// > Scripts
-					"<%= settings.scripts %>/**/*.js", 
-					"<%= settings.tests %>/**/*.js", 
-					"<%= settings.atoms %>/**/*.js", 
-					"<%= settings.molecules %>/**/*.js", 
-					"<%= settings.organisms %>/**/*.js", 
-					"<%= settings.templates %>/**/*.js", 
-
-					// > SASS
-					"<%= settings.style %>/**/*.scss", 
-					"<%= settings.atoms %>/**/*.scss", 
-					"<%= settings.molecules %>/**/*.scss", 
-					"<%= settings.organisms %>/**/*.scss", 
-					"<%= settings.templates %>/**/*.scss",
-
-					// > Templates
-					"<%= settings.atoms %>/**/*.hbs", 
-					"<%= settings.molecules %>/**/*.hbs", 
-					"<%= settings.organisms %>/**/*.hbs", 
-					"<%= settings.templates %>/**/*.hbs",
-					"<%= settings.layouts %>/**/*.hbs",
-					"<%= settings.partials %>/**/*.hbs"
-				],
-				tasks: ['docs']
+			tests: {
+				files: ['<%= settings.tests %>/**/*.js', '!<%= settings.tests %>/visual/**/*.js', '<%= settings.atoms %>/**/*.js', '<%= settings.molecules %>/**/*.js', '<%= settings.organisms %>/**/*.js'],
+				tasks: ['test']
 			}
 		},
 
-		// ##### Run multiple watch commands
-		concurrent: {
-			options: {
-				logConcurrentOutput: true
-			},
-			site: {
-				tasks: ['watch:sass', 'watch:js', 'watch:hbs']
-			},
-			run: {
-				tasks: ['server', 'automate']
-			}
-		},
 
 		// ##### Compile scripts with Require JS
 		requirejs: {
-			compile: {
+			site: {
 				options: {
 					baseUrl: "<%= settings.scripts %>",
 					mainConfigFile: "<%= settings.scripts %>/config.js",
@@ -171,8 +177,12 @@ module.exports = function(grunt) {
 			}
 		},
 
+
 		// ##### Generate documentation
 		groc: {
+			options: {
+				"out": "<%= settings.docs %>/"
+			},
 			site: [
 				"README.md",
 				"TODO.md",
@@ -201,11 +211,9 @@ module.exports = function(grunt) {
 				"<%= settings.templates %>/**/*.hbs",
 				"<%= settings.layouts %>/**/*.hbs",
 				"<%= settings.partials %>/**/*.hbs"
-			],
-			options: {
-				"out": "<%= settings.doc %>/"
-			}
+			]
 		},
+
 
 		// ##### Live reload with BrowserSync
 		browserSync: {
@@ -219,10 +227,11 @@ module.exports = function(grunt) {
 			options: {
 				server: {
 					baseDir: ['<%= settings.dest %>/'],
-					watchTask: true
-				}
+				},
+				watchTask: true
 			}
 		},
+
 		
 		// ##### Unit testing with Karma, Mocha, Chai and Sinon
 		karma: {
@@ -234,6 +243,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+
 		// ##### Functional testing with CasperJS and Mocha
 		mocha_casperjs: {
 			options: {
@@ -244,6 +254,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+
 		// ##### CSS Regression testing with PhantomCSS
 		phantomcss: {
 			options: {
@@ -252,7 +263,7 @@ module.exports = function(grunt) {
 				options: {
 					screenshots: '<%= settings.tests %>/visual/screenshots/baseline/desktop/',
 					results: '<%= settings.tests %>/visual/screenshots/results/desktop/',
-					viewportSize: [1024, 768]
+					viewportSize: [1280, 768]
 				},
 				src: [
 					'<%= settings.tests %>/visual/**/*.js'
@@ -277,12 +288,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-mocha-casperjs');
 	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-phantomcss');
-	grunt.loadNpmTasks('grunt-concurrent');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('assemble');
 	// Modified [grunt-groc](https://github.com/seltar/grunt-groc) task with personal fork of [groc](https://github.com/seltar/groc)
@@ -293,7 +305,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('sassimp', function(target){
 		// Get the options
 		var options = grunt.config.get(this.name)[target];
-		var files = [];
+		var files = ['// Autogenerated - Don\'t modify! '];
 		// Get all files matching the glob from options
 		grunt.file.expand(options.files).map(function(filepath) {
 			// Get basename
@@ -314,25 +326,22 @@ module.exports = function(grunt) {
 	grunt.registerTask('server', ['browserSync']);
 	// * `grunt build` 
 	// > Build HTML
-	grunt.registerTask('build', ['assemble']);
+	grunt.registerTask('build', ['assemble:site']);
 	// * `grunt scripts` 
 	// > Check for errors in javascript
-	grunt.registerTask('scripts', ['jshint', 'requirejs', 'copy']);
+	grunt.registerTask('scripts', ['jshint', 'requirejs']);
 	// * `grunt styles` 
 	// > Generate components import and compile SASS
-	grunt.registerTask('styles', ['sassimp:site', 'sass:site']);
+	grunt.registerTask('styles', ['sassimp:site', 'sass:site', 'autoprefixer', 'cssmin']);
 	// * `grunt docs` 
 	// > Generate documentation
-	grunt.registerTask('docs', ['clean:doc', 'groc:site']);
-	// * `grunt autodocs` 
-	// > Watch for changes and generate documentation
-	grunt.registerTask('autodocs', ['watch:docs']);
-	// * `grunt automate` 
-	// > Watch for changes and automatically run tasks
-	grunt.registerTask('automate', ['concurrent:site']);
+	grunt.registerTask('docs', ['clean:docs', 'groc:site']);
 	// * `grunt test` 
 	// > Run unit and functional tests
 	grunt.registerTask('test', ['karma', 'mocha_casperjs']);
+	// * `grunt watch` 
+	// > Watch for changes and automatically run tasks
+
 	// * `grunt baseline`
 	// > Register CSS Regression baseline
 	grunt.registerTask('baseline', ['clean:screenshots', 'phantomcss']);
@@ -343,10 +352,10 @@ module.exports = function(grunt) {
 
 	// * `grunt make` 
 	// > Builds the entire site
-	grunt.registerTask('make', ['clean:site', 'build', 'scripts', 'styles']);
+	grunt.registerTask('make', ['clean:site', 'copy:site', 'build', 'scripts', 'styles']);
 	// * `grunt run` 
 	// > Starts the server and watches files
-	grunt.registerTask('run', ['concurrent:run']);
+	grunt.registerTask('run', ['server', 'watch']);
 	//  
 
 	// * `grunt` 

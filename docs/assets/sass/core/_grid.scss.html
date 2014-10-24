@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en"><head><title>assets/sass/core/_grid.scss</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="assets/sass/core/_grid.scss"><meta name="groc-project-path" content="assets/sass/core/_grid.scss"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">assets/sass/core/_grid.scss</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p>Foundation by ZURB
+foundation.zurb.com
+Licensed under MIT Open Source</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"global"</span>;</span></div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> variables</span></p></div></div><div class="code"><div class="wrapper">$include-<span class="hljs-tag">html</span>-grid-classes<span class="hljs-value">: $include-html-classes !default;</span>
+$include-xl-<span class="hljs-tag">html</span>-grid-classes<span class="hljs-value">: false !default;</span>
+
+$row-<span class="hljs-attribute">width</span><span class="hljs-value">: rem-calc(<span class="hljs-number">1000</span>) !default;</span>
+$total-<span class="hljs-attribute">columns</span><span class="hljs-value">: <span class="hljs-number">12</span> !default;</span>
+
+$last-child-<span class="hljs-attribute">float</span><span class="hljs-value">: $opposite-direction !default;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Grid Functions</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Deprecated: We&#39;ll drop support for this in 5.1, use grid-calc()</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> gridCalc</span>($colNumber, $totalColumns) {</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">warn</span> <span class="hljs-string">"gridCalc() is deprecated, use grid-calc()"</span>;</span>
+  <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> grid-calc</span>($colNumber, $totalColumns);</span>
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> FUNCTION $colNumber - Found in settings file
+$totalColumns - Found in settings file</span></p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@function<span class="hljs-preprocessor"> grid-calc</span>($colNumber, $totalColumns) {</span>
+  <span class="hljs-at_rule">@return<span class="hljs-preprocessor"> percentage</span>(($colNumber / $totalColumns));</span>
+}</div></div></div><div class="segment"><div class="comments doc-section"><div class="wrapper"><p><span class='doc-section-header'> mixins</span></p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>For creating container, nested, and collapsed rows.
+$behavior - Any special behavior for this row? Default: false. Options: nest, collapse, nest-collapse, false.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> grid-row</span>($behavior:<span class="hljs-preprocessor"> false</span>) {</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>use @include grid-row(nest); to include a nested row</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $behavior ==<span class="hljs-preprocessor"> nest</span> {</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">margin</span>-#{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: -($column-gutter/<span class="hljs-number">2</span>);</span>
+    <span class="hljs-attribute">margin</span>-#{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: -($column-gutter/<span class="hljs-number">2</span>);</span>
+    <span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">max-width</span><span class="hljs-value">: none;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>use @include grid-row(collapse); to collapsed a container row margins</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">else</span><span class="hljs-preprocessor"> if</span> $behavior ==<span class="hljs-preprocessor"> collapse</span> {</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+    <span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">max-width</span><span class="hljs-value">: $row-width;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>use @include grid-row(nest-collapse); to collapse outer margins on a nested row</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">else</span><span class="hljs-preprocessor"> if</span> $behavior ==<span class="hljs-preprocessor"> nest-collapse</span> {</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">max-width</span><span class="hljs-value">: none;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>use @include grid-row; to use a container row</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">else</span> {</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
+    <span class="hljs-attribute">margin</span>-#{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">margin</span>-#{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">max-width</span><span class="hljs-value">: $row-width;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Clearfix for all rows</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> clearfix</span>();</span>
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Creates a column, should be used inside of a media query to control layouts
+$columns - The number of columns this should be
+$last-column - Is this the last column? Default: false.
+$center - Center these columns? Default: false.
+$offset - # of columns to offset. Default: false.
+$push - # of columns to push. Default: false.
+$pull - # of columns to pull. Default: false.
+$collapse - Get rid of gutter padding on column? Default: false.
+$float - Should this float? Default: true. Options: true, false, left, right.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> grid-column</span>(
+  $columns:false,
+  $last-column:false,
+  $center:false,
+  $offset:false,
+  $push:false,
+  $pull:false,
+  $collapse:false,
+  $float:true,
+  $position:false) {</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>If positioned for default .column, include relative position
+push and pull require position set</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $position<span class="hljs-preprocessor"> or</span> $push<span class="hljs-preprocessor"> or</span> $pull {</span>
+    <span class="hljs-attribute">position</span><span class="hljs-value">: relative;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>If collapsed, get rid of gutter padding</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $collapse {</span>
+    <span class="hljs-attribute">padding-left</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">padding-right</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Gutter padding whenever a column isn&#39;t set to collapse
+(use $collapse:null to do nothing)</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">else</span><span class="hljs-preprocessor"> if</span> $collapse ==<span class="hljs-preprocessor"> false</span> {</span>
+    <span class="hljs-attribute">padding-left</span><span class="hljs-value">: $column-gutter / <span class="hljs-number">2</span>;</span>
+    <span class="hljs-attribute">padding-right</span><span class="hljs-value">: $column-gutter / <span class="hljs-number">2</span>;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>If a column number is given, calculate width</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $columns {</span>
+    <span class="hljs-attribute">width</span><span class="hljs-value">: grid-calc($columns, $total-columns);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>If last column, float naturally instead of to the right</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $last-column {</span> <span class="hljs-attribute">float</span><span class="hljs-value">: $opposite-direction;</span> }
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Source Ordering, adds left/right depending on which you use.</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $push {</span> #{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: grid-calc($push, $total-columns);</span> #{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: auto;</span> }
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $pull {</span> #{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: grid-calc($pull, $total-columns);</span> #{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: auto;</span> }
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $float {</span>
+    <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $float ==<span class="hljs-preprocessor"> left</span><span class="hljs-preprocessor"> or</span> $float ==<span class="hljs-preprocessor"> true</span> {</span> <span class="hljs-attribute">float</span><span class="hljs-value">: $default-float;</span> }
+    <span class="hljs-at_rule">@<span class="hljs-keyword">else</span><span class="hljs-preprocessor"> if</span> $float ==<span class="hljs-preprocessor"> right</span> {</span> <span class="hljs-attribute">float</span><span class="hljs-value">: $opposite-direction;</span> }
+    <span class="hljs-at_rule">@<span class="hljs-keyword">else</span> {</span> <span class="hljs-attribute">float</span><span class="hljs-value">: none;</span> }
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>If centered, get rid of float and add appropriate margins</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $center {</span>
+    <span class="hljs-attribute">margin</span>-#{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">margin</span>-#{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">float</span><span class="hljs-value">: none;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>If offset, calculate appropriate margins</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $offset {</span> <span class="hljs-attribute">margin</span>-#{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: grid-calc($offset, $total-columns) <span class="hljs-important">!important</span>;</span> }
+
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Create presentational classes for grid
+$size - Name of class to use, i.e. &quot;large&quot; will generate .large-1, .large-2, etc.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-at_rule">@<span class="hljs-keyword">mixin</span><span class="hljs-preprocessor"> grid-html-classes</span>($size) {</span>
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">for</span> $i<span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 0</span><span class="hljs-preprocessor"> through</span> $total-columns<span class="hljs-preprocessor"> -</span><span class="hljs-preprocessor"> 1</span> {</span>
+    .#{$size}-push-#{$<span class="hljs-tag">i</span>} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($push:$i, $collapse:null, $float:false);</span>
+    }
+    .#{$size}-pull-#{$<span class="hljs-tag">i</span>} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($pull:$i, $collapse:null, $float:false);</span>
+    }
+  }
+
+  <span class="hljs-class">.column</span>,
+  <span class="hljs-class">.columns</span> { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($columns:false, $position:true);</span> }
+
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">for</span> $i<span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 1</span><span class="hljs-preprocessor"> through</span> $total-columns {</span>
+    .#{$size}-#{$<span class="hljs-tag">i</span>} { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($columns:$i,$collapse:null,$float:false);</span> }
+  }
+
+
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">for</span> $i<span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 0</span><span class="hljs-preprocessor"> through</span> $total-columns<span class="hljs-preprocessor"> -</span><span class="hljs-preprocessor"> 1</span> {</span>
+    .#{$size}-offset-#{$<span class="hljs-tag">i</span>} { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($offset:$i, $collapse:null,$float:false);</span> }
+  }
+  .#{$size}-reset-<span class="hljs-attribute">order</span> {
+    <span class="hljs-attribute">margin</span>-#{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">margin</span>-#{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">left</span><span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">right</span><span class="hljs-value">: auto;</span>
+    <span class="hljs-attribute">float</span><span class="hljs-value">: $default-float;</span>
+  }
+
+  <span class="hljs-class">.column</span>.#{$size}-centered,
+  <span class="hljs-class">.columns</span>.#{$size}-centered { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($center:true, $collapse:null, $float:false);</span> }
+
+  <span class="hljs-class">.column</span>.#{$size}-uncentered,
+  <span class="hljs-class">.columns</span>.#{$size}-uncentered {
+    <span class="hljs-attribute">margin</span>-#{$<span class="hljs-value">default</span>-<span class="hljs-attribute">float</span>}<span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">margin</span>-#{$opposite-<span class="hljs-attribute">direction</span>}<span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">float</span><span class="hljs-value">: $default-float;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Fighting [class<em>=&quot;column&quot;] + [class</em>=&quot;column&quot;]:last-child</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-class">.column</span>.#{$size}-centered<span class="hljs-pseudo">:last-child</span>,
+  <span class="hljs-class">.columns</span>.#{$size}-centered<span class="hljs-pseudo">:last-child</span>{
+    <span class="hljs-attribute">float</span><span class="hljs-value">: none;</span>
+  }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Fighting .column.<previous-size>-centered:last-child</p></div></div><div class="code"><div class="wrapper">  <span class="hljs-class">.column</span>.#{$size}-uncentered<span class="hljs-pseudo">:last-child</span>,
+  <span class="hljs-class">.columns</span>.#{$size}-uncentered<span class="hljs-pseudo">:last-child</span> {
+    <span class="hljs-attribute">float</span><span class="hljs-value">: $default-float;</span>
+  }
+
+  <span class="hljs-class">.column</span>.#{$size}-uncentered<span class="hljs-class">.opposite</span>,
+  <span class="hljs-class">.columns</span>.#{$size}-uncentered<span class="hljs-class">.opposite</span> {
+    <span class="hljs-attribute">float</span><span class="hljs-value">: $opposite-direction;</span>
+  }
+}
+
+<span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> exports</span>(<span class="hljs-string">"grid"</span>) {</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $<span class="hljs-keyword">include</span>-html-grid-classes {</span>
+    <span class="hljs-class">.row</span> {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-row</span>;</span>
+
+      &amp;<span class="hljs-class">.collapse</span> {
+         &gt; <span class="hljs-class">.column</span>,
+         &gt; <span class="hljs-class">.columns</span> { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($collapse:true, $float:false);</span> }
+
+        <span class="hljs-class">.row</span> {<span class="hljs-attribute">margin-left</span><span class="hljs-value">:<span class="hljs-number">0</span>;</span> <span class="hljs-attribute">margin-right</span><span class="hljs-value">:<span class="hljs-number">0</span>;</span>}
+      }
+
+      <span class="hljs-class">.row</span> { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-row</span>($behavior:nest);</span>
+        &amp;<span class="hljs-class">.collapse</span> { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-row</span>($behavior:nest-collapse);</span> }
+      }
+    }
+
+    <span class="hljs-class">.column</span>,
+    <span class="hljs-class">.columns</span> { <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($columns:$total-columns);</span> }
+
+    <span class="hljs-attr_selector">[class*="column"]</span> + <span class="hljs-attr_selector">[class*="column"]</span><span class="hljs-pseudo">:last-child</span> { <span class="hljs-attribute">float</span><span class="hljs-value">: $last-child-float;</span> }
+    <span class="hljs-attr_selector">[class*="column"]</span> + <span class="hljs-attr_selector">[class*="column"]</span><span class="hljs-class">.end</span> { <span class="hljs-attribute">float</span><span class="hljs-value">: $default-float;</span> }
+
+    <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> #{</span>$<span class="hljs-tag">small</span>-up} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-html-classes</span>($size:small);</span>
+    }
+
+    <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> #{</span>$<span class="hljs-value">medium</span>-up} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-html-classes</span>($size:medium);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Old push and pull classes</p></div></div><div class="code"><div class="wrapper">      <span class="hljs-at_rule">@<span class="hljs-keyword">for</span> $i<span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 0</span><span class="hljs-preprocessor"> through</span> $total-columns<span class="hljs-preprocessor"> -</span><span class="hljs-preprocessor"> 1</span> {</span>
+        <span class="hljs-class">.push-</span>#{$<span class="hljs-tag">i</span>} {
+          <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($push:$i, $collapse:null, $float:false);</span>
+        }
+        <span class="hljs-class">.pull-</span>#{$<span class="hljs-tag">i</span>} {
+          <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($pull:$i, $collapse:null, $float:false);</span>
+        }
+      }
+    }
+    <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> #{</span>$large-up} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-html-classes</span>($size:large);</span>
+      <span class="hljs-at_rule">@<span class="hljs-keyword">for</span> $i<span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 0</span><span class="hljs-preprocessor"> through</span> $total-columns<span class="hljs-preprocessor"> -</span><span class="hljs-preprocessor"> 1</span> {</span>
+        <span class="hljs-class">.push-</span>#{$<span class="hljs-tag">i</span>} {
+          <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($push:$i, $collapse:null, $float:false);</span>
+        }
+        <span class="hljs-class">.pull-</span>#{$<span class="hljs-tag">i</span>} {
+          <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>($pull:$i, $collapse:null, $float:false);</span>
+        }
+      }
+    }
+  }
+  <span class="hljs-at_rule">@<span class="hljs-keyword">if</span> $<span class="hljs-keyword">include</span>-xl-html-grid-classes {</span>
+    <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> #{</span>$xlarge-up} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-html-classes</span>($size:xlarge);</span>
+    }
+    <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> #{</span>$xxlarge-up} {
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-html-classes</span>($size:xxlarge);</span>
+    }
+  }
+}</div></div></div></div></body></html>

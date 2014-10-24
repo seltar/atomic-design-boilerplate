@@ -1,1 +1,29 @@
-{{> molecule-search search }}
+<header>
+	<div class="bar">
+		<div class="menu-marker"></div>
+	</div>
+	<div class="row">
+		<div class="columns large-3">
+			<div class="logo">
+				<img src="assets/images/logo.svg" alt="logo" />
+				<h1>company</h1>
+			</div>
+		</div>
+		<div class="columns large-7">
+			{{> molecule-menu menu }}
+		</div>
+		<div class="columns large-2">
+			{{> molecule-sub-menu submenu }}
+		</div>
+	</div>
+</header>
+{{#background}}
+<div class="background">
+	<div class="row">
+		<div class="columns large-6">
+			<h1>{{default title 'Cute kitten'}}</h1>
+			<a href="#" class="button">{{default button 'Like'}}</a>
+		</div>
+	</div>
+</div>
+{{/background}}

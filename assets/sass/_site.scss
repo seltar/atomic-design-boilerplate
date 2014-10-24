@@ -1,1 +1,159 @@
 // Add your styles here
+
+
+/**
+ * Core
+ */
+
+body
+{
+	font-family: "Open Sans";
+	font-weight: 400;
+	color: #000;
+}
+
+a{
+	color: #000;
+	text-decoration: none;
+}
+
+h3{
+	font-size: 28px;
+	font-weight: 300;
+	margin: 7px 0 0;
+	letter-spacing: 2px;
+}
+span
+{
+	font-size: 12px;
+	letter-spacing: 2px;
+}
+p{
+	font-size: 14px;
+}
+img
+{
+	max-width: 100%;
+}
+
+
+/**
+ * Blocks
+ */
+
+.block{
+	position: relative;
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 0;
+	opacity: 1;
+	&.block-hidden
+	{
+		margin-top: 50px;
+		opacity: 0;
+	}
+	transition: opacity 0.6s, margin-top 0.6s;
+
+	&.badge{
+		position: static;
+		margin: 0 auto 20px;
+		width: 180px;
+		height: 180px;
+		border-radius: 100%;
+		background: $primary;
+		color: #FFF;
+		padding: 40px 20px;
+		p{
+			margin: 0;
+			font-size: 14px;
+			line-height: 16px;
+		}
+	}
+
+	h3,
+	span{
+		text-transform: uppercase;
+		line-height: 1.1;
+	}
+	span:first-child{
+		display: block;
+	}
+	.image{
+		position: relative;
+	}
+	&.product-item .image{
+		padding: 0 3px 0;
+	}
+
+}
+
+
+.block-large{
+	.badge{
+		left: 0;
+		top: 50%;
+	}
+	h3
+	{
+		font-weight: 800;
+		margin: 30px 0 0;
+	}
+	p{
+		margin: 10px 0 30px;
+		font-size: 16px;
+	}
+	.text{
+		padding: 0 30px;
+	}
+}
+
+/**
+ * Form
+ */
+
+.form{
+	text-align: center;
+	padding: 0 20px;
+}
+
+/* input (footer) */
+input{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	display: block;
+	background: transparent;
+	border: none;
+	border-bottom: solid 1px #90a1a5;
+	text-align: center;
+	margin: 40px 0 30px;
+	padding: 5px 0;
+	width: 100%;
+}
+
+/**
+ * Lists
+ */
+.list-centered,
+[class^="list-grid"], [class*=" list-grid"]
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+[class^="list-grid"], [class*=" list-grid"]
+{
+	li{
+		display: inline-block;
+	}
+}
+.list-grid{
+	li{
+		width: 40%;
+		height: 50px;
+	}
+}
+.list-grid-3{
+	li{
+		width: 33%;
+	}
+}

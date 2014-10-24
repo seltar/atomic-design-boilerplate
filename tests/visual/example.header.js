@@ -1,13 +1,15 @@
-// Take a screenshot of the main header and check if it still matches the baseline
+// Take a screenshot of the main header and footer and check if it still matches the baseline
 
-casper.start('output/index.html')
+casper.start('dist/index.html')
 .then(function() {
-  phantomcss.screenshot('#home', 'Main header');
+	phantomcss.screenshot('header', 'header');
+})
+.then(function() {
+	phantomcss.screenshot('footer', 'footer');
 });
-/*
-.then(function() {
+/*.then(function() {
   casper.fill('form.todo-form', {
-    todo: 'Item1'
+    todo: 'Item31'
   }, true);
 
   phantomcss.screenshot('#todo-app', 'Item added');

@@ -1,4 +1,124 @@
-.icon{
-	text-align: left;
-	color: red;
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?lq8o94');
+	src:url('../fonts/icomoon.eot?#iefixlq8o94') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?lq8o94') format('woff'),
+		url('../fonts/icomoon.ttf?lq8o94') format('truetype'),
+		url('../fonts/icomoon.svg?lq8o94#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+	content: "\e600";
+}
+.icon-pencil:before {
+	content: "\e601";
+}
+.icon-image:before {
+	content: "\e602";
+}
+.icon-music:before {
+	content: "\e603";
+}
+.icon-calendar:before {
+	content: "\e604";
+}
+.icon-bubble:before {
+	content: "\e605";
+}
+.icon-user:before {
+	content: "\e606";
+}
+.icon-users:before {
+	content: "\e607";
+}
+.icon-cog:before {
+	content: "\e608";
+}
+.icon-download:before {
+	content: "\e609";
+}
+.icon-upload:before {
+	content: "\e60a";
+}
+.icon-eye:before {
+	content: "\e60b";
+}
+.icon-eye-blocked:before {
+	content: "\e60c";
+}
+.icon-star:before {
+	content: "\e60d";
+}
+.icon-star-filled:before {
+	content: "\e60e";
+}
+.icon-heart-filled:before {
+	content: "\e60f";
+}
+.icon-heart:before {
+	content: "\e610";
+}
+.icon-close:before {
+	content: "\e611";
+}
+.icon-checkmark:before {
+	content: "\e612";
+}
+.icon-minus:before {
+	content: "\e613";
+}
+.icon-plus:before {
+	content: "\e614";
+}
+.icon-play:before {
+	content: "\e615";
+}
+.icon-pause:before {
+	content: "\e616";
+}
+.icon-stop:before {
+	content: "\e617";
+}
+.icon-backward:before {
+	content: "\e618";
+}
+.icon-forward:before {
+	content: "\e619";
+}
+.icon-share:before {
+	content: "\e61a";
+}
+.icon-mail:before {
+	content: "\e61b";
+}
+.icon-googleplus:before {
+	content: "\e61c";
+}
+.icon-facebook:before {
+	content: "\e61d";
+}
+.icon-twitter:before {
+	content: "\e61e";
+}
+.icon-youtube:before {
+	content: "\e61f";
+}
+.icon-instagram:before {
+	content: "\e620";
 }

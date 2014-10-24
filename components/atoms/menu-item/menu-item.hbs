@@ -1,0 +1,18 @@
+<li>
+	<a href="#">{{title}}</a>
+	{{#if items}}
+	<ul class="dropdown">
+	{{/if}}
+	{{#items}}
+		{{> atom-menu-item this }}	
+	{{/items}}
+	{{#if items}}
+	</ul>
+	{{/if}}
+	{{#if items}}
+		<div class="campaign">
+			<img src="assets/images/cat.png" />
+			<span>new collection<br />spring/summer 2015</span>
+		</div>
+	{{/if}}
+</li>

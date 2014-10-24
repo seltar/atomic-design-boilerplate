@@ -1,0 +1,14 @@
+<a href="#" class="block product-item {{#if hidden}}block-hidden{{/if}}">
+	{{> atom-image-badge image }}
+	<div class="text">
+		{{#if text.first}}
+		<span>{{text.first}}</span>
+		{{/if}}
+		{{#if text.second}}
+		<h3>{{text.second}}</h3>
+		{{/if}}
+		{{#if text.third}}
+		<span>{{text.third}}</span>
+		{{/if}}
+	</div>
+</a>

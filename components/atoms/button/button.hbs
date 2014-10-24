@@ -1,9 +1,9 @@
 {{#if typeButton}}
-	<button {{#id}}id="{{id}}"{{/id}} class="button">{{safe title 'button'}}</button>
+	<button {{#id}}id="{{id}}"{{/id}} class="button">{{default title 'button'}}</button>
 {{else}}
 	{{#if typeInput}}
-		<input {{#id}}id="{{id}}"{{/id}} type="submit" class="button" value="{{safe title 'button'}}" />
+		<input {{#id}}id="{{id}}"{{/id}} type="submit" class="button" value="{{default title 'button'}}" />
 	{{else}}
-		<a href="{{#url}}{{url}}{{/url}}{{^url}}javascript:void(0);{{/url}}" {{#id}}id="{{id}}"{{/id}} class="button">{{safe title 'button'}}</a>
+		<a href="{{#url}}{{url}}{{/url}}{{^url}}javascript:void(0);{{/url}}" {{#id}}id="{{id}}"{{/id}} class="button">{{default title 'button'}}</a>
 	{{/if}}
 {{/if}}
