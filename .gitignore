@@ -19,7 +19,6 @@ TODO.md
 
 .sass-cache
 node_modules
-output
-vendor
+dist
 temp
 tmp
