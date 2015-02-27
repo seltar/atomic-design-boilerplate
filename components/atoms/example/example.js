@@ -1,16 +1,15 @@
 // > define dependencies
-define([],  function(){
+define(['base'],  function(Base){
 
 	// > example
-	var example = {
-		greet: function(name){
-			if(!name){
-				name = "world";
-			}
-			return 'hello, '+name+'!';
-		}
+	function Example(){}
+
+	Example.prototype = new Base();
+
+	Example.prototype.greet = function(){
+		return "hello";
 	};
 
 	// > return the component
-	return example;
+	return Example;
 });

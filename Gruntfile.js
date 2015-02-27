@@ -155,7 +155,7 @@ module.exports = function(grunt) {
 				tasks: ['copy:site', 'scripts']
 			},
 			hbs: {
-				files: ['<%= settings.templates %>/**/*.hbs', '<%= settings.components %>/**/*.hbs'],
+				files: ['<%= settings.templates %>/**/*.hbs', '<%= settings.components %>/**/*.hbs', '<%= settings.data %>/*.json'],
 				tasks: ['copy:site', 'build']
 			},
 			tests: {
@@ -329,7 +329,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['assemble:site']);
 	// * `grunt scripts` 
 	// > Check for errors in javascript
-	grunt.registerTask('scripts', ['jshint', 'requirejs']);
+	grunt.registerTask('scripts', ['requirejs']);
 	// * `grunt styles` 
 	// > Generate components import and compile SASS
 	grunt.registerTask('styles', ['sassimp:site', 'sass:site', 'autoprefixer', 'cssmin']);
@@ -360,6 +360,6 @@ module.exports = function(grunt) {
 
 	// * `grunt` 
 	// > Default task
-	grunt.registerTask('default', ['make', 'test', 'docs', 'run']);
+	grunt.registerTask('default', ['make', 'docs', 'run']);
 
 };

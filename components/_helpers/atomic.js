@@ -25,7 +25,6 @@ module.exports.register = function (Handlebars, options, params) {
 		var inflection = pattern + 's';
 		var dir = baseDir + "/" + inflection;
 
-
 		fs.readdir(dir, function (err, files) {
 			if (err) {
 				console.log(err);
@@ -39,20 +38,59 @@ module.exports.register = function (Handlebars, options, params) {
 				var name = dir+'/'+files[i];
 				if (fs.statSync(name).isDirectory()){
 					var template = file.readFileSync(name + "/" + files[i] + ".hbs");
+					// dette er {{ > atom-primary-header }}. 
 					Handlebars.registerPartial(pattern + "-" + files[i], template);
+
+					// dette er {{#atom-primary-header obj || '{json:"here"}' }}
+					(function(name){
+						
+						Handlebars.registerHelper(name, function(data, options) {
+							data = typeof data === "string" ? JSON.parse(data) : data || {};
+							data = _.extend(data, options);
+							var template = Handlebars.partials[name];
+							if(typeof template === "string"){
+								template = Handlebars.compile(template);
+							}
+							return new Handlebars.SafeString(template(data));
+						});
+
+					})(pattern + "-" + files[i]);
 
 					console.log(pattern + "-" + files[i], "registered");
 				}
 			}
 		});
 
+		// dette er {{#atom 'primary-header' obj || '{json:"here"}' }}
 		Handlebars.registerHelper(pattern, function(name, context) {
-			context = _.extend(config, context || {});
+			context = _.extend(config, typeof context === "string" ? JSON.parse(context) : context || {});
 
 			var template = Handlebars.partials[pattern + '-' + name],
 				data = _.extend(context, this);
 
+			if(typeof template === "string"){
+				template = Handlebars.compile(template);
+			}
+
 			return new Handlebars.SafeString(template(data));
 		});
+
+		Handlebars.registerHelper(pattern+"-raw", function(name, context) {
+			context = _.extend(config, typeof context === "string" ? JSON.parse(context) : context || {});
+
+			var template = Handlebars.partials[pattern + '-' + name],
+				data = _.extend(context, this);
+
+			if(typeof template === "string"){
+				template = Handlebars.compile(template);
+			}
+
+			var html = template(data);
+			html = html.replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
+			// TODO Fix indenting
+
+			return html;
+		});     
 	});
+
 };
