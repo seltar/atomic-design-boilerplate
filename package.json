@@ -50,7 +50,7 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-requirejs": "^0.2.2",
     "karma-sinon": "^1.0.3",
-    "lodash": "~2.4.1",
+    "lodash": ">=4.17.19",
     "mocha": "^1.21.5",
     "phantomjs": "^1.9.10",
     "pretty": "~0.1.2",
